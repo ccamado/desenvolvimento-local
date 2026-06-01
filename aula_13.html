@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 13 — Kanban para organizar tarefas do projeto</title>
+<style>
+
+:root{
+  --bg:#eef4ff;--ink:#1b2a41;--muted:#5f7186;--card:#ffffff;--border:#d7e4ff;
+  --brand:#2563eb;--brand2:#7c3aed;--brand3:#14b8a6;--brand4:#f59e0b;
+  --shadow:0 12px 35px rgba(38,65,106,.12);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 18%),
+    radial-gradient(circle at 90% 15%, rgba(37,99,235,.12), transparent 20%),
+    radial-gradient(circle at 30% 90%, rgba(20,184,166,.12), transparent 18%),
+    linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%);
+  line-height:1.65;
+}
+.container{max-width:1180px;margin:0 auto;padding:24px}
+.hero{
+  position:relative;overflow:hidden;color:white;border-radius:28px;padding:34px 28px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  box-shadow:var(--shadow); margin:20px 0 24px;
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:999px;opacity:.18;background:white;
+}
+.hero:before{width:180px;height:180px;right:-40px;top:-40px}
+.hero:after{width:120px;height:120px;left:-20px;bottom:-30px}
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:24px;
+  padding:22px; margin:18px 0; box-shadow:var(--shadow);
+}
+h1,h2,h3{line-height:1.2;margin:0 0 14px}
+h1{font-size:2.2rem} h2{font-size:1.5rem} h3{font-size:1.15rem}
+p{margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.kv{background:#f8fbff;border:1px dashed #cfe0ff;border-radius:18px;padding:14px}
+.kv strong{display:block;margin-bottom:6px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.92rem}
+.revisao{background:#fff1d6;color:#8a5a00}
+.hoje{background:#ddf9ea;color:#0c6e3a}
+.embreve{background:#e9eef6;color:#64748b}
+.lesson-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.lesson-card:before{content:"";position:absolute;inset:auto -40px -50px auto;width:120px;height:120px;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:.10;border-radius:999px}
+.btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;padding:12px 16px;border-radius:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent1),var(--accent2))}
+.btn.disabled{background:#cbd5e1;color:#475569;cursor:not-allowed;pointer-events:none}
+.small{font-size:.95rem;color:var(--muted)}
+.back{color:var(--accent1);text-decoration:none;font-weight:700}
+.images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ill-card{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border:1px solid var(--border);border-radius:20px;padding:12px;text-align:center}
+.ill-card svg{width:100%;height:auto;display:block}
+.note{background:linear-gradient(135deg,rgba(255,244,229,.95),rgba(255,255,255,.95));border:1px solid #ffe1ad;border-radius:18px;padding:16px}
+.summary-list{padding-left:24px}
+.summary-list li{margin-bottom:8px}
+.quiz-q{margin-bottom:16px;padding:16px;border:1px solid var(--border);border-radius:18px;background:#fbfdff}
+.option{display:block;margin:8px 0;padding:11px 13px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:#fff}
+.option.correct{border-color:#16a34a;background:#ecfdf3}
+.option.wrong{border-color:#dc2626;background:#fef0f0}
+.feedback{display:none;margin-top:16px;padding:16px;border-radius:16px;background:#eef6ff;border:1px solid #cddffb}
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.badge{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.18);backdrop-filter: blur(4px);font-weight:700}
+footer{padding:24px 0 40px;color:var(--muted)}
+
+:root{--accent1:#2563eb;--accent2:#10b981;--accent3:#f97316;}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="pill embreve">Em breve</div>
+    <h1>Aula 13 — Kanban para organizar tarefas do projeto</h1>
+    <p><strong>Disciplina:</strong> Desenvolvimento Local • <strong>Turma:</strong> 2º ano do Ensino Médio</p>
+    <p><strong>Projeto âncora:</strong> Central de Avisos • <strong>Data planejada:</strong> 15/06/2026</p>
+    <div class="badge-row">
+      <span class="badge">🎯 Microproduto individual</span>
+      <span class="badge">📘 Resumo em 10 linhas</span>
+      <span class="badge">🎮 Quiz com 10 questões</span>
+    </div>
+  </header>
+
+  <p><a class="back" href="index.html">← Voltar ao menu</a></p>
+
+  <section class="card">
+    <h2>Galeria visual da aula ✨</h2>
+    <div class="images"><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prancheta colorida">
+    <rect width="320" height="220" rx="24" fill="#f7fffb"/>
+    <rect x="90" y="26" width="140" height="176" rx="16" fill="#2563eb" opacity=".14"/>
+    <rect x="98" y="38" width="124" height="156" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="6"/>
+    <rect x="128" y="24" width="64" height="26" rx="10" fill="#10b981"/>
+    <circle cx="118" cy="82" r="9" fill="#f97316"/>
+    <rect x="136" y="75" width="58" height="12" rx="6" fill="#2563eb" opacity=".8"/>
+    <circle cx="118" cy="116" r="9" fill="#f97316"/>
+    <rect x="136" y="109" width="44" height="12" rx="6" fill="#10b981" opacity=".85"/>
+    <circle cx="118" cy="150" r="9" fill="#f97316"/>
+    <rect x="136" y="143" width="64" height="12" rx="6" fill="#2563eb" opacity=".6"/>
+    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico colorido">
+    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
+    <rect x="52" y="44" width="220" height="134" rx="14" fill="#fff" stroke="#2563eb" stroke-width="6"/>
+    <rect x="84" y="126" width="28" height="34" rx="8" fill="#f97316"/>
+    <rect x="128" y="98" width="28" height="62" rx="8" fill="#10b981"/>
+    <rect x="172" y="78" width="28" height="82" rx="8" fill="#2563eb"/>
+    <rect x="216" y="58" width="28" height="102" rx="8" fill="#10b981" opacity=".75"/>
+    <path d="M78 136 C108 108, 146 102, 184 84 S236 62, 248 48" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="248" cy="48" r="8" fill="#2563eb"/>
+    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Megafone e avisos">
+    <rect width="320" height="220" rx="24" fill="#fffaf3"/>
+    <circle cx="74" cy="58" r="28" fill="#2563eb" opacity=".18"/>
+    <path d="M82 126 L190 86 C214 77 236 78 250 88 L250 152 C236 162 214 163 190 154 L82 114 Z" fill="#2563eb"/>
+    <rect x="68" y="114" width="24" height="12" rx="4" fill="#10b981"/>
+    <rect x="95" y="126" width="22" height="40" rx="8" fill="#10b981"/>
+    <path d="M262 82 Q292 102 262 122" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round"/>
+    <path d="M278 62 Q316 102 278 142" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+    <rect x="38" y="34" width="70" height="18" rx="9" fill="#f97316" opacity=".22"/>
+    </svg></div></div>
+    <p class="small">As imagens desta página foram construídas para deixar a aula mais visual, didática e próxima da linguagem do Ensino Médio, sempre conectada ao projeto Central de Avisos.</p>
+  </section>
+
+  <section class="card">
+    <h2>Conteúdo da aula</h2>
+    <p>Nesta aula, a turma vai usar o Kanban para organizar as tarefas do projeto.</p><p>O Kanban é um quadro visual simples que ajuda a acompanhar o que precisa ser feito, o que está em andamento e o que já foi concluído.</p><p>No projeto Central de Avisos, ele pode ajudar a distribuir tarefas como pesquisar, organizar dados, revisar propostas e preparar apresentação.</p><p>A organização visual torna o trabalho mais claro e evita que etapas importantes sejam esquecidas.</p><p>A aula mostra que planejar bem também faz parte de resolver problemas.</p>
+  </section>
+
+  <section class="card">
+    <h2>Roteiro rápido do dia</h2>
+    <div class="meta">
+      <div class="kv"><strong>Produto</strong>quadro Kanban com colunas “a fazer”, “fazendo” e “pronto”.</div>
+      <div class="kv"><strong>Evidência</strong>caderno.</div>
+      <div class="kv"><strong>Critério de pronto</strong>separa corretamente as tarefas do projeto.</div>
+    </div>
+    <div class="note" style="margin-top:14px">
+      <strong>Conteúdo principal:</strong><br>organização visual de tarefas
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumo em 10 linhas para copiar no caderno 📝</h2>
+    <ol class="summary-list"><li>A aula estudou kanban para organizar tarefas do projeto.</li><li>O conteúdo foi ligado ao projeto Central de Avisos.</li><li>A proposta da aula foi entender melhor a comunicação escolar.</li><li>A turma trabalhou com exemplos próximos da realidade da escola.</li><li>O microproduto serviu como registro objetivo da aprendizagem.</li><li>O caderno foi usado como espaço principal de evidência.</li><li>O conteúdo ajudou a organizar a investigação e a proposta de solução.</li><li>A Central de Avisos continua sendo o eixo do projeto da disciplina.</li><li>O objetivo foi aprender de forma clara, prática e gradual.</li><li>A aula ajudou a construir uma solução mais organizada para a escola.</li></ol>
+  </section>
+
+  <section class="card">
+    <h2>Quiz gameficado 🎮</h2>
+    <p class="small">Responda as 10 questões e clique em <strong>corrigir quiz</strong>. No final, você recebe uma pontuação e uma medalha.</p>
+    <div id="quiz"></div>
+    <button class="btn" onclick="gradeQuiz()">Corrigir quiz</button>
+    <div id="feedback" class="feedback"></div>
+  </section>
+
+  <footer>Material digital colorido • Desenvolvimento Local • Projeto Central de Avisos</footer>
+</div>
+
+<script>
+const quiz = [{"q": "Qual é o projeto âncora desta disciplina?", "options": ["Central de Avisos", "Feira de Ciências", "Jornal Escolar", "Semana do Esporte"], "answer": 0, "explanation": "Todas as aulas do bimestre estão ligadas ao projeto Central de Avisos."}, {"q": "Onde a evidência principal da aula é registrada?", "options": ["No caderno do aluno", "Somente no mural", "Somente na direção", "Apenas no recreio"], "answer": 0, "explanation": "No planejamento, a evidência principal fica no caderno do aluno."}, {"q": "O objetivo da disciplina é ligar teoria a quê?", "options": ["Um problema real da escola", "Um tema aleatório", "Somente decoração", "Um jogo sem contexto"], "answer": 0, "explanation": "A disciplina liga teoria a problemas reais da escola."}, {"q": "Kanban é...", "options": ["quadro visual de tarefas", "tipo de prova", "grupo de pesquisa", "texto científico"], "answer": 0, "explanation": "Kanban é uma ferramenta visual para organizar tarefas."}, {"q": "Uma coluna comum no Kanban é...", "options": ["A fazer", "Fim do ano", "Sem tarefa", "Só depois"], "answer": 0, "explanation": "As colunas mais usadas são a fazer, fazendo e pronto."}, {"q": "Kanban ajuda a turma a...", "options": ["acompanhar o andamento do projeto", "esquecer as tarefas", "diminuir a organização", "trocar de tema"], "answer": 0, "explanation": "Ele ajuda a visualizar o fluxo do trabalho."}, {"q": "No projeto, uma tarefa do Kanban pode ser...", "options": ["organizar dados dos avisos", "ignorar os recados", "parar a investigação", "apagar o caderno"], "answer": 0, "explanation": "Organizar dados é uma tarefa coerente com o projeto."}, {"q": "O quadro Kanban facilita...", "options": ["planejamento e acompanhamento", "confusão", "falta de foco", "desordem"], "answer": 0, "explanation": "Ele dá clareza ao fluxo de tarefas."}, {"q": "Distribuir tarefas no projeto ajuda a...", "options": ["avançar com mais organização", "parar o trabalho", "evitar registros", "confundir a turma"], "answer": 0, "explanation": "A organização favorece o avanço do projeto."}, {"q": "Kanban está ligado à ideia de...", "options": ["organização visual", "sorte", "decoreba", "isolamento"], "answer": 0, "explanation": "É uma ferramenta visual de organização."}];
+
+function renderQuiz(){
+  const box = document.getElementById('quiz');
+  box.innerHTML = '';
+  quiz.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `<h3>${idx+1}. ${item.q}</h3>` + item.options.map((opt, oi) => `
+      <label class="option">
+        <input type="radio" name="q${idx}" value="${oi}" style="margin-right:8px">
+        ${opt}
+      </label>`).join('') + `<div class="small" id="exp${idx}" style="display:none;margin-top:8px;"></div>`;
+    box.appendChild(div);
+  });
+}
+
+function gradeQuiz(){
+  let score = 0;
+  const questions = document.querySelectorAll('.quiz-q');
+  questions.forEach((qDiv, idx) => {
+    const chosen = qDiv.querySelector(`input[name="q${idx}"]:checked`);
+    const opts = qDiv.querySelectorAll('.option');
+    opts.forEach(el => el.classList.remove('correct','wrong'));
+    if(chosen){
+      const val = Number(chosen.value);
+      if(val === quiz[idx].answer){
+        score++;
+        chosen.parentElement.classList.add('correct');
+      } else {
+        chosen.parentElement.classList.add('wrong');
+        opts[quiz[idx].answer].classList.add('correct');
+      }
+    } else {
+      opts[quiz[idx].answer].classList.add('correct');
+    }
+    const exp = document.getElementById(`exp${idx}`);
+    exp.style.display = 'block';
+    exp.innerHTML = `<strong>Explicação:</strong> ${quiz[idx].explanation}`;
+  });
+  let medal = "🥉 Bronze";
+  if(score >= 9) medal = "🏆 Mestre dos Avisos";
+  else if(score >= 7) medal = "🥇 Ouro";
+  else if(score >= 5) medal = "🥈 Prata";
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.innerHTML = `<h3>Resultado final</h3><p>Você acertou <strong>${score}</strong> de <strong>${quiz.length}</strong>.</p><p><strong>Medalha:</strong> ${medal}</p><p>Revise o resumo do caderno e tente novamente para melhorar sua pontuação.</p>`;
+}
+
+renderQuiz();
+</script>
+</body>
+</html>

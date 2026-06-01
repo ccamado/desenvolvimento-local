@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 4 — Método de Engenharia e Ciências Sociais no projeto</title>
+<style>
+
+:root{
+  --bg:#eef4ff;--ink:#1b2a41;--muted:#5f7186;--card:#ffffff;--border:#d7e4ff;
+  --brand:#2563eb;--brand2:#7c3aed;--brand3:#14b8a6;--brand4:#f59e0b;
+  --shadow:0 12px 35px rgba(38,65,106,.12);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 18%),
+    radial-gradient(circle at 90% 15%, rgba(37,99,235,.12), transparent 20%),
+    radial-gradient(circle at 30% 90%, rgba(20,184,166,.12), transparent 18%),
+    linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%);
+  line-height:1.65;
+}
+.container{max-width:1180px;margin:0 auto;padding:24px}
+.hero{
+  position:relative;overflow:hidden;color:white;border-radius:28px;padding:34px 28px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  box-shadow:var(--shadow); margin:20px 0 24px;
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:999px;opacity:.18;background:white;
+}
+.hero:before{width:180px;height:180px;right:-40px;top:-40px}
+.hero:after{width:120px;height:120px;left:-20px;bottom:-30px}
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:24px;
+  padding:22px; margin:18px 0; box-shadow:var(--shadow);
+}
+h1,h2,h3{line-height:1.2;margin:0 0 14px}
+h1{font-size:2.2rem} h2{font-size:1.5rem} h3{font-size:1.15rem}
+p{margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.kv{background:#f8fbff;border:1px dashed #cfe0ff;border-radius:18px;padding:14px}
+.kv strong{display:block;margin-bottom:6px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.92rem}
+.revisao{background:#fff1d6;color:#8a5a00}
+.hoje{background:#ddf9ea;color:#0c6e3a}
+.embreve{background:#e9eef6;color:#64748b}
+.lesson-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.lesson-card:before{content:"";position:absolute;inset:auto -40px -50px auto;width:120px;height:120px;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:.10;border-radius:999px}
+.btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;padding:12px 16px;border-radius:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent1),var(--accent2))}
+.btn.disabled{background:#cbd5e1;color:#475569;cursor:not-allowed;pointer-events:none}
+.small{font-size:.95rem;color:var(--muted)}
+.back{color:var(--accent1);text-decoration:none;font-weight:700}
+.images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ill-card{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border:1px solid var(--border);border-radius:20px;padding:12px;text-align:center}
+.ill-card svg{width:100%;height:auto;display:block}
+.note{background:linear-gradient(135deg,rgba(255,244,229,.95),rgba(255,255,255,.95));border:1px solid #ffe1ad;border-radius:18px;padding:16px}
+.summary-list{padding-left:24px}
+.summary-list li{margin-bottom:8px}
+.quiz-q{margin-bottom:16px;padding:16px;border:1px solid var(--border);border-radius:18px;background:#fbfdff}
+.option{display:block;margin:8px 0;padding:11px 13px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:#fff}
+.option.correct{border-color:#16a34a;background:#ecfdf3}
+.option.wrong{border-color:#dc2626;background:#fef0f0}
+.feedback{display:none;margin-top:16px;padding:16px;border-radius:16px;background:#eef6ff;border:1px solid #cddffb}
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.badge{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.18);backdrop-filter: blur(4px);font-weight:700}
+footer{padding:24px 0 40px;color:var(--muted)}
+
+:root{--accent1:#4f46e5;--accent2:#06b6d4;--accent3:#f43f5e;}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="pill revisao">Revisão</div>
+    <h1>Aula 4 — Método de Engenharia e Ciências Sociais no projeto</h1>
+    <p><strong>Disciplina:</strong> Desenvolvimento Local • <strong>Turma:</strong> 2º ano do Ensino Médio</p>
+    <p><strong>Projeto âncora:</strong> Central de Avisos • <strong>Data planejada:</strong> 11/05/2026</p>
+    <div class="badge-row">
+      <span class="badge">🎯 Microproduto individual</span>
+      <span class="badge">📘 Resumo em 10 linhas</span>
+      <span class="badge">🎮 Quiz com 10 questões</span>
+    </div>
+  </header>
+
+  <p><a class="back" href="index.html">← Voltar ao menu</a></p>
+
+  <section class="card">
+    <h2>Galeria visual da aula ✨</h2>
+    <div class="images"><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lâmpada de ideias">
+    <rect width="320" height="220" rx="24" fill="#fffdf5"/>
+    <circle cx="160" cy="86" r="48" fill="#f43f5e" opacity=".26"/>
+    <path d="M160 38 C126 38 100 62 100 94 c0 22 13 35 26 47 c8 8 12 16 12 24 h44 c0-8 4-16 12-24 c13-12 26-25 26-47 c0-32-26-56-60-56z" fill="#4f46e5"/>
+    <rect x="136" y="164" width="48" height="16" rx="8" fill="#06b6d4"/>
+    <path d="M160 10 v18 M214 30 l-12 12 M106 30 l12 12 M238 84 h-18 M82 84 h18" stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico colorido">
+    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
+    <rect x="52" y="44" width="220" height="134" rx="14" fill="#fff" stroke="#4f46e5" stroke-width="6"/>
+    <rect x="84" y="126" width="28" height="34" rx="8" fill="#f43f5e"/>
+    <rect x="128" y="98" width="28" height="62" rx="8" fill="#06b6d4"/>
+    <rect x="172" y="78" width="28" height="82" rx="8" fill="#4f46e5"/>
+    <rect x="216" y="58" width="28" height="102" rx="8" fill="#06b6d4" opacity=".75"/>
+    <path d="M78 136 C108 108, 146 102, 184 84 S236 62, 248 48" fill="none" stroke="#4f46e5" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="248" cy="48" r="8" fill="#4f46e5"/>
+    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pessoas conversando">
+    <rect width="320" height="220" rx="24" fill="#fff7fc"/>
+    <circle cx="100" cy="78" r="24" fill="#4f46e5"/>
+    <circle cx="220" cy="78" r="24" fill="#06b6d4"/>
+    <path d="M60 172 C64 134, 90 122, 126 122 C162 122, 138 172, 138 172 Z" fill="#4f46e5" opacity=".84"/>
+    <path d="M182 172 C186 134, 212 122, 248 122 C284 122, 260 172, 260 172 Z" fill="#06b6d4" opacity=".84"/>
+    <path d="M145 60 h46 a14 14 0 0 1 14 14 v18 a14 14 0 0 1 -14 14 h-26 l-18 12 5-12 h-7 a14 14 0 0 1 -14 -14 v-18 a14 14 0 0 1 14 -14z" fill="#f43f5e" opacity=".22"/>
+    </svg></div></div>
+    <p class="small">As imagens desta página foram construídas para deixar a aula mais visual, didática e próxima da linguagem do Ensino Médio, sempre conectada ao projeto Central de Avisos.</p>
+  </section>
+
+  <section class="card">
+    <h2>Conteúdo da aula</h2>
+    <p>Nesta aula, a turma vai comparar três formas importantes de olhar para um problema: Método Científico, Método de Engenharia e Ciências Sociais.</p><p>O Método Científico ajuda a investigar e compreender o problema. O Método de Engenharia ajuda a planejar uma solução prática. As Ciências Sociais ajudam a entender as pessoas, os grupos e o contexto em que o problema acontece.</p><p>No projeto Central de Avisos, os três olhares são importantes, porque a escola precisa ser observada como espaço real de comunicação.</p><p>A comparação entre esses métodos mostra que pesquisar e resolver problemas envolve mais de uma forma de pensar.</p><p>Com isso, a turma amplia sua visão sobre desenvolvimento local e organização de soluções.</p>
+  </section>
+
+  <section class="card">
+    <h2>Roteiro rápido do dia</h2>
+    <div class="meta">
+      <div class="kv"><strong>Produto</strong>quadro comparativo entre Método Científico, Método de Engenharia e Ciências Sociais.</div>
+      <div class="kv"><strong>Evidência</strong>caderno.</div>
+      <div class="kv"><strong>Critério de pronto</strong>explica a função de cada método sem confusão.</div>
+    </div>
+    <div class="note" style="margin-top:14px">
+      <strong>Conteúdo principal:</strong><br>diferenças entre investigar, testar solução e compreender contexto
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Resumo em 10 linhas para copiar no caderno 📝</h2>
+    <ol class="summary-list"><li>A aula estudou método de engenharia e ciências sociais no projeto.</li><li>O conteúdo foi ligado ao projeto Central de Avisos.</li><li>A proposta da aula foi entender melhor a comunicação escolar.</li><li>A turma trabalhou com exemplos próximos da realidade da escola.</li><li>O microproduto serviu como registro objetivo da aprendizagem.</li><li>O caderno foi usado como espaço principal de evidência.</li><li>O conteúdo ajudou a organizar a investigação e a proposta de solução.</li><li>A Central de Avisos continua sendo o eixo do projeto da disciplina.</li><li>O objetivo foi aprender de forma clara, prática e gradual.</li><li>A aula ajudou a construir uma solução mais organizada para a escola.</li></ol>
+  </section>
+
+  <section class="card">
+    <h2>Quiz gameficado 🎮</h2>
+    <p class="small">Responda as 10 questões e clique em <strong>corrigir quiz</strong>. No final, você recebe uma pontuação e uma medalha.</p>
+    <div id="quiz"></div>
+    <button class="btn" onclick="gradeQuiz()">Corrigir quiz</button>
+    <div id="feedback" class="feedback"></div>
+  </section>
+
+  <footer>Material digital colorido • Desenvolvimento Local • Projeto Central de Avisos</footer>
+</div>
+
+<script>
+const quiz = [{"q": "Qual é o projeto âncora desta disciplina?", "options": ["Central de Avisos", "Feira de Ciências", "Jornal Escolar", "Semana do Esporte"], "answer": 0, "explanation": "Todas as aulas do bimestre estão ligadas ao projeto Central de Avisos."}, {"q": "Onde a evidência principal da aula é registrada?", "options": ["No caderno do aluno", "Somente no mural", "Somente na direção", "Apenas no recreio"], "answer": 0, "explanation": "No planejamento, a evidência principal fica no caderno do aluno."}, {"q": "O objetivo da disciplina é ligar teoria a quê?", "options": ["Um problema real da escola", "Um tema aleatório", "Somente decoração", "Um jogo sem contexto"], "answer": 0, "explanation": "A disciplina liga teoria a problemas reais da escola."}, {"q": "Esta aula continua ligada a qual projeto?", "options": ["Central de Avisos", "Feira da Primavera", "Roteiro Turístico", "Jornal de Esporte"], "answer": 0, "explanation": "Todas as aulas seguem ligadas ao projeto Central de Avisos."}, {"q": "O microproduto ajuda a...", "options": ["registrar a aprendizagem", "apagar o conteúdo", "encerrar o projeto", "evitar estudo"], "answer": 0, "explanation": "O microproduto é a evidência objetiva da aula."}, {"q": "A proposta da aula deve ficar ligada a quê?", "options": ["realidade da escola", "assunto sem contexto", "tema aleatório", "só decoração"], "answer": 0, "explanation": "O projeto sempre parte da realidade escolar."}, {"q": "A disciplina busca...", "options": ["desenvolvimento local com problema real", "apenas memorização", "assuntos sem ligação", "tarefas sem sentido"], "answer": 0, "explanation": "A disciplina trabalha desenvolvimento local com problema real da escola."}, {"q": "Um bom registro no caderno precisa ser...", "options": ["claro e organizado", "vazio", "sem relação com a aula", "copiado sem leitura"], "answer": 0, "explanation": "O caderno é parte da evidência da aprendizagem."}, {"q": "A Central de Avisos quer melhorar...", "options": ["provas, horários, prazos e comunicados", "a cor da escola", "a quadra apenas", "somente o uniforme"], "answer": 0, "explanation": "Esse é o foco do projeto."}, {"q": "O conteúdo da aula deve servir para...", "options": ["aprofundar o projeto", "desligar do projeto", "mudar de tema", "parar a investigação"], "answer": 0, "explanation": "Cada aula fortalece o projeto Central de Avisos."}];
+
+function renderQuiz(){
+  const box = document.getElementById('quiz');
+  box.innerHTML = '';
+  quiz.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `<h3>${idx+1}. ${item.q}</h3>` + item.options.map((opt, oi) => `
+      <label class="option">
+        <input type="radio" name="q${idx}" value="${oi}" style="margin-right:8px">
+        ${opt}
+      </label>`).join('') + `<div class="small" id="exp${idx}" style="display:none;margin-top:8px;"></div>`;
+    box.appendChild(div);
+  });
+}
+
+function gradeQuiz(){
+  let score = 0;
+  const questions = document.querySelectorAll('.quiz-q');
+  questions.forEach((qDiv, idx) => {
+    const chosen = qDiv.querySelector(`input[name="q${idx}"]:checked`);
+    const opts = qDiv.querySelectorAll('.option');
+    opts.forEach(el => el.classList.remove('correct','wrong'));
+    if(chosen){
+      const val = Number(chosen.value);
+      if(val === quiz[idx].answer){
+        score++;
+        chosen.parentElement.classList.add('correct');
+      } else {
+        chosen.parentElement.classList.add('wrong');
+        opts[quiz[idx].answer].classList.add('correct');
+      }
+    } else {
+      opts[quiz[idx].answer].classList.add('correct');
+    }
+    const exp = document.getElementById(`exp${idx}`);
+    exp.style.display = 'block';
+    exp.innerHTML = `<strong>Explicação:</strong> ${quiz[idx].explanation}`;
+  });
+  let medal = "🥉 Bronze";
+  if(score >= 9) medal = "🏆 Mestre dos Avisos";
+  else if(score >= 7) medal = "🥇 Ouro";
+  else if(score >= 5) medal = "🥈 Prata";
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.innerHTML = `<h3>Resultado final</h3><p>Você acertou <strong>${score}</strong> de <strong>${quiz.length}</strong>.</p><p><strong>Medalha:</strong> ${medal}</p><p>Revise o resumo do caderno e tente novamente para melhorar sua pontuação.</p>`;
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
