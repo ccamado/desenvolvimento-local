@@ -3,552 +3,442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desenvolvimento Local — 2º bimestre colorido</title>
+<title>Desenvolvimento Local — 2º Bimestre 2026</title>
+<link rel="stylesheet" href="style.css">
 <style>
+body { background: var(--cinza-claro); }
 
-:root{
-  --bg:#eef4ff;--ink:#1b2a41;--muted:#5f7186;--card:#ffffff;--border:#d7e4ff;
-  --brand:#2563eb;--brand2:#7c3aed;--brand3:#14b8a6;--brand4:#f59e0b;
-  --shadow:0 12px 35px rgba(38,65,106,.12);
+.hero {
+  background: linear-gradient(135deg, var(--roxo-escuro) 0%, var(--roxo) 55%, var(--laranja) 100%);
+  padding: 60px 32px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);
-  background:
-    radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 18%),
-    radial-gradient(circle at 90% 15%, rgba(37,99,235,.12), transparent 20%),
-    radial-gradient(circle at 30% 90%, rgba(20,184,166,.12), transparent 18%),
-    linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%);
-  line-height:1.65;
+.hero::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  background: rgba(255,255,255,0.05); border-radius: 50%;
 }
-.container{max-width:1180px;margin:0 auto;padding:24px}
-.hero{
-  position:relative;overflow:hidden;color:white;border-radius:28px;padding:34px 28px;
-  background:linear-gradient(135deg,var(--accent1),var(--accent2));
-  box-shadow:var(--shadow); margin:20px 0 24px;
+.hero::after {
+  content: '';
+  position: absolute; bottom: -60px; left: -60px;
+  width: 240px; height: 240px;
+  background: rgba(255,107,53,0.15); border-radius: 50%;
 }
-.hero:before,.hero:after{
-  content:"";position:absolute;border-radius:999px;opacity:.18;background:white;
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  padding: 5px 18px; border-radius: 20px;
+  margin-bottom: 16px; text-transform: uppercase;
 }
-.hero:before{width:180px;height:180px;right:-40px;top:-40px}
-.hero:after{width:120px;height:120px;left:-20px;bottom:-30px}
-.card{
-  background:var(--card); border:1px solid var(--border); border-radius:24px;
-  padding:22px; margin:18px 0; box-shadow:var(--shadow);
+.hero h1 {
+  font-family: 'Fredoka One', cursive;
+  color: white; font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1; position: relative; z-index: 1;
 }
-h1,h2,h3{line-height:1.2;margin:0 0 14px}
-h1{font-size:2.2rem} h2{font-size:1.5rem} h3{font-size:1.15rem}
-p{margin:0 0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-.kv{background:#f8fbff;border:1px dashed #cfe0ff;border-radius:18px;padding:14px}
-.kv strong{display:block;margin-bottom:6px}
-.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.92rem}
-.revisao{background:#fff1d6;color:#8a5a00}
-.hoje{background:#ddf9ea;color:#0c6e3a}
-.embreve{background:#e9eef6;color:#64748b}
-.lesson-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
-.lesson-card:before{content:"";position:absolute;inset:auto -40px -50px auto;width:120px;height:120px;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:.10;border-radius:999px}
-.btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;padding:12px 16px;border-radius:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent1),var(--accent2))}
-.btn.disabled{background:#cbd5e1;color:#475569;cursor:not-allowed;pointer-events:none}
-.small{font-size:.95rem;color:var(--muted)}
-.back{color:var(--accent1);text-decoration:none;font-weight:700}
-.images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.ill-card{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border:1px solid var(--border);border-radius:20px;padding:12px;text-align:center}
-.ill-card svg{width:100%;height:auto;display:block}
-.note{background:linear-gradient(135deg,rgba(255,244,229,.95),rgba(255,255,255,.95));border:1px solid #ffe1ad;border-radius:18px;padding:16px}
-.summary-list{padding-left:24px}
-.summary-list li{margin-bottom:8px}
-.quiz-q{margin-bottom:16px;padding:16px;border:1px solid var(--border);border-radius:18px;background:#fbfdff}
-.option{display:block;margin:8px 0;padding:11px 13px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:#fff}
-.option.correct{border-color:#16a34a;background:#ecfdf3}
-.option.wrong{border-color:#dc2626;background:#fef0f0}
-.feedback{display:none;margin-top:16px;padding:16px;border-radius:16px;background:#eef6ff;border:1px solid #cddffb}
-.badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.badge{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.18);backdrop-filter: blur(4px);font-weight:700}
-footer{padding:24px 0 40px;color:var(--muted)}
+.hero h2 {
+  color: rgba(255,255,255,0.85); font-size: 1.1rem;
+  margin-top: 10px; font-weight: 600; position: relative; z-index: 1;
+}
+.hero-info {
+  display: flex; justify-content: center; gap: 24px;
+  flex-wrap: wrap; margin-top: 24px; position: relative; z-index: 1;
+}
+.hero-pill {
+  background: rgba(255,255,255,0.15); color: white;
+  padding: 8px 20px; border-radius: 30px;
+  font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.25);
+}
 
-:root{--accent1:#2563eb;--accent2:#7c3aed;--accent3:#14b8a6;}
+/* Projeto ancora */
+.projeto-card {
+  max-width: 900px; margin: -40px auto 40px;
+  background: white; border-radius: 24px;
+  padding: 32px; box-shadow: 0 20px 60px rgba(107,33,168,0.2);
+  position: relative; z-index: 10;
+}
+.projeto-card h3 {
+  font-family: 'Fredoka One', cursive;
+  color: var(--roxo); font-size: 1.5rem;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
+.projeto-desc { color: #4B5563; line-height: 1.7; font-size: 0.95rem; }
+.projeto-tags { margin-top: 16px; }
+
+/* Semanas */
+.semanas-grid { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+
+.semana-bloco {
+  margin-bottom: 32px;
+}
+.semana-titulo {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem; letter-spacing: 2px; color: var(--roxo);
+  text-transform: uppercase; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.semana-titulo::after {
+  content: ''; flex: 1; height: 2px;
+  background: linear-gradient(90deg, var(--roxo-claro), transparent);
+}
+
+.aulas-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width: 600px) { .aulas-row { grid-template-columns: 1fr; } }
+
+.aula-card {
+  background: white; border-radius: 18px;
+  padding: 22px; box-shadow: var(--sombra);
+  text-decoration: none; display: block;
+  transition: all 0.3s; position: relative; overflow: hidden;
+  border: 2px solid transparent;
+}
+.aula-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+}
+.aula-card.revisao::before { background: linear-gradient(90deg, #9CA3AF, #D1D5DB); }
+.aula-card.hoje::before    { background: linear-gradient(90deg, var(--laranja), var(--laranja-claro)); }
+.aula-card.breve::before   { background: linear-gradient(90deg, #C4B5FD, #DDD6FE); }
+
+.aula-card.revisao:hover { border-color: #9CA3AF; transform: translateY(-4px); }
+.aula-card.hoje:hover    { border-color: var(--laranja); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(255,107,53,0.25); }
+.aula-card.breve { opacity: 0.65; cursor: not-allowed; }
+
+.status-badge {
+  display: inline-block; padding: 3px 12px;
+  border-radius: 20px; font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase;
+}
+.revisao .status-badge { background: #E5E7EB; color: #4B5563; }
+.hoje    .status-badge { background: #FFF7ED; color: var(--laranja); border: 1px solid var(--laranja); }
+.breve   .status-badge { background: #F3F4F6; color: #9CA3AF; }
+
+.aula-num-label {
+  font-family: 'Space Mono', monospace; font-size: 0.75rem;
+  color: #9CA3AF; margin-bottom: 6px;
+}
+.aula-card h4 {
+  font-family: 'Fredoka One', cursive; font-size: 1.1rem;
+  color: var(--texto); margin-bottom: 8px; line-height: 1.3;
+}
+.aula-card.hoje h4 { color: var(--roxo); }
+.aula-card p { color: #6B7280; font-size: 0.82rem; line-height: 1.5; }
+
+.hoje-glow {
+  border: 2px solid var(--laranja) !important;
+  box-shadow: 0 0 0 4px rgba(255,107,53,0.15), var(--sombra) !important;
+}
+.hoje-glow::after {
+  content: '✨ HOJE';
+  position: absolute; top: 16px; right: 16px;
+  background: var(--laranja); color: white;
+  font-size: 0.7rem; font-weight: 800;
+  padding: 4px 10px; border-radius: 20px; letter-spacing: 1px;
+}
+
+/* Legenda */
+.legenda {
+  display: flex; justify-content: center; gap: 20px;
+  flex-wrap: wrap; margin: 0 auto 40px; max-width: 900px; padding: 0 20px;
+}
+.leg-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; color: #4B5563; font-weight: 600;
+}
+.leg-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+}
+.leg-dot.revisao { background: #9CA3AF; }
+.leg-dot.hoje    { background: var(--laranja); }
+.leg-dot.breve   { background: #C4B5FD; }
+
+/* Footer */
+footer {
+  text-align: center; padding: 30px;
+  color: #6B7280; font-size: 0.85rem;
+  border-top: 2px solid var(--cinza);
+}
+footer strong { color: var(--roxo); }
+
+/* Animate in */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.semana-bloco { animation: fadeInUp 0.5s ease both; }
+.semana-bloco:nth-child(1) { animation-delay: 0.05s; }
+.semana-bloco:nth-child(2) { animation-delay: 0.1s; }
+.semana-bloco:nth-child(3) { animation-delay: 0.15s; }
+.semana-bloco:nth-child(4) { animation-delay: 0.2s; }
+.semana-bloco:nth-child(5) { animation-delay: 0.25s; }
+.semana-bloco:nth-child(6) { animation-delay: 0.3s; }
+.semana-bloco:nth-child(7) { animation-delay: 0.35s; }
+.semana-bloco:nth-child(8) { animation-delay: 0.4s; }
+.semana-bloco:nth-child(9) { animation-delay: 0.45s; }
+.semana-bloco:nth-child(10){ animation-delay: 0.5s; }
+.semana-bloco:nth-child(11){ animation-delay: 0.55s; }
 </style>
 </head>
 <body>
-<div class="container">
-  <header class="hero">
-    <h1>Desenvolvimento Local — 2º bimestre</h1>
-    <p><strong>Turma:</strong> 2º ano do Ensino Médio • <strong>Ritmo:</strong> segundas-feiras em 2 tempos de 50 minutos</p>
-    <p><strong>Projeto âncora:</strong> Central de Avisos — provas, horários, prazos e comunicados</p>
-    <div class="badge-row">
-      <span class="badge">🌈 Visual mais atrativo</span>
-      <span class="badge">🖼️ Várias imagens por aula</span>
-      <span class="badge">🎯 Tudo ligado ao projeto</span>
-    </div>
-  </header>
 
-  <section class="card">
-    <h2>Apresentação da matéria</h2>
-    <p>Esta trilha digital foi pensada para uma turma do Ensino Médio e por isso ficou mais visual, colorida e didática. A disciplina de <strong>Desenvolvimento Local</strong> ajuda a turma a investigar um problema real da escola, compreender o contexto local e organizar uma proposta de melhoria que faça sentido para a comunidade escolar.</p>
-    <p>No 2º bimestre, o foco está em aprofundar a pesquisa, observar o contexto da escola, entender indicadores, pensar soluções socialmente úteis e organizar o projeto com ferramentas de planejamento. Tudo continua alinhado ao projeto <strong>Central de Avisos</strong>, que busca melhorar a circulação de provas, horários, prazos e comunicados. Esse tipo de trabalho dialoga com a proposta de resolver problemas reais da escola e do entorno, com base em investigação e metodologias de projeto. fileciteturn18file16 fileciteturn18file18turn18file19</p>
-  </section>
-
-  <section class="card">
-    <h2>Galeria da matéria 🖼️</h2>
-    <div class="images"><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f59e0b" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f59e0b" opacity=".25"/>
-    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Megafone e avisos">
-    <rect width="320" height="220" rx="24" fill="#fffaf3"/>
-    <circle cx="74" cy="58" r="28" fill="#10b981" opacity=".18"/>
-    <path d="M82 126 L190 86 C214 77 236 78 250 88 L250 152 C236 162 214 163 190 154 L82 114 Z" fill="#10b981"/>
-    <rect x="68" y="114" width="24" height="12" rx="4" fill="#2563eb"/>
-    <rect x="95" y="126" width="22" height="40" rx="8" fill="#2563eb"/>
-    <path d="M262 82 Q292 102 262 122" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
-    <path d="M278 62 Q316 102 278 142" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" opacity=".7"/>
-    <rect x="38" y="34" width="70" height="18" rx="9" fill="#f59e0b" opacity=".22"/>
-    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pessoas conversando">
-    <rect width="320" height="220" rx="24" fill="#fff7fc"/>
-    <circle cx="100" cy="78" r="24" fill="#ec4899"/>
-    <circle cx="220" cy="78" r="24" fill="#7c3aed"/>
-    <path d="M60 172 C64 134, 90 122, 126 122 C162 122, 138 172, 138 172 Z" fill="#ec4899" opacity=".84"/>
-    <path d="M182 172 C186 134, 212 122, 248 122 C284 122, 260 172, 260 172 Z" fill="#7c3aed" opacity=".84"/>
-    <path d="M145 60 h46 a14 14 0 0 1 14 14 v18 a14 14 0 0 1 -14 14 h-26 l-18 12 5-12 h-7 a14 14 0 0 1 -14 -14 v-18 a14 14 0 0 1 14 -14z" fill="#22c55e" opacity=".22"/>
-    </svg></div><div class="ill-card"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico colorido">
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <rect x="52" y="44" width="220" height="134" rx="14" fill="#fff" stroke="#0ea5e9" stroke-width="6"/>
-    <rect x="84" y="126" width="28" height="34" rx="8" fill="#f59e0b"/>
-    <rect x="128" y="98" width="28" height="62" rx="8" fill="#22c55e"/>
-    <rect x="172" y="78" width="28" height="82" rx="8" fill="#0ea5e9"/>
-    <rect x="216" y="58" width="28" height="102" rx="8" fill="#22c55e" opacity=".75"/>
-    <path d="M78 136 C108 108, 146 102, 184 84 S236 62, 248 48" fill="none" stroke="#0ea5e9" stroke-width="6" stroke-linecap="round"/>
-    <circle cx="248" cy="48" r="8" fill="#0ea5e9"/>
-    </svg></div></div>
-    <p class="small">As imagens foram criadas no próprio material para deixar a navegação mais viva, mais jovem e mais fácil de entender.</p>
-  </section>
-
-  <section class="card">
-    <h2>Como usar este material</h2>
-    <div class="meta">
-      <div class="kv"><strong>Revisão</strong>Aulas que já passaram e podem ser estudadas novamente.</div>
-      <div class="kv"><strong>Do dia</strong>Aula marcada para amanhã, pronta para uso imediato.</div>
-      <div class="kv"><strong>Em breve</strong>Aulas futuras bloqueadas no menu.</div>
-      <div class="kv"><strong>Estrutura</strong>Cada aula tem conteúdo, resumo em 10 linhas e quiz com 10 questões.</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Menu das aulas</h2>
-    <div class="grid">
-      
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 1 — Tipos de abordagem de pesquisa: qualitativa, quantitativa e quali-quantitativa</h3>
-      <p class="small"><strong>Data:</strong> 04/05/2026 • <strong>Semana:</strong> 1</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> quadro comparativo com as 3 abordagens e 1 exemplo de cada na Central de Avisos.</p>
-      <a class="btn" href="aula_01.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 2 — Aplicando as abordagens de pesquisa ao problema da comunicação escolar</h3>
-      <p class="small"><strong>Data:</strong> 04/05/2026 • <strong>Semana:</strong> 1</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> tabela com problema, tipo de dado e abordagem mais adequada.</p>
-      <a class="btn" href="aula_02.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#4f46e5;--accent2:#06b6d4;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 3 — Método Científico em linguagem simples</h3>
-      <p class="small"><strong>Data:</strong> 11/05/2026 • <strong>Semana:</strong> 2</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f43f5e" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#06b6d4" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#4f46e5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f43f5e" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> esquema com etapas do Método Científico aplicado à Central de Avisos.</p>
-      <a class="btn" href="aula_03.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#4f46e5;--accent2:#06b6d4;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 4 — Método de Engenharia e Ciências Sociais no projeto</h3>
-      <p class="small"><strong>Data:</strong> 11/05/2026 • <strong>Semana:</strong> 2</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f43f5e" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#06b6d4" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#4f46e5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f43f5e" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> quadro comparativo entre Método Científico, Método de Engenharia e Ciências Sociais.</p>
-      <a class="btn" href="aula_04.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 5 — A escola como laboratório vivo</h3>
-      <p class="small"><strong>Data:</strong> 18/05/2026 • <strong>Semana:</strong> 3</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> mapa de atores, espaços e fluxos de informação da escola.</p>
-      <a class="btn" href="aula_05.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 6 — Observação do contexto escolar e circulação dos avisos</h3>
-      <p class="small"><strong>Data:</strong> 18/05/2026 • <strong>Semana:</strong> 3</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> lista de 5 pontos da escola onde a comunicação acontece ou falha.</p>
-      <a class="btn" href="aula_06.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#0ea5e9;--accent2:#22c55e;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 7 — Indicadores socioeconômicos em linguagem simples</h3>
-      <p class="small"><strong>Data:</strong> 25/05/2026 • <strong>Semana:</strong> 4</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico colorido">
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <rect x="52" y="44" width="220" height="134" rx="14" fill="#fff" stroke="#0ea5e9" stroke-width="6"/>
-    <rect x="84" y="126" width="28" height="34" rx="8" fill="#f59e0b"/>
-    <rect x="128" y="98" width="28" height="62" rx="8" fill="#22c55e"/>
-    <rect x="172" y="78" width="28" height="82" rx="8" fill="#0ea5e9"/>
-    <rect x="216" y="58" width="28" height="102" rx="8" fill="#22c55e" opacity=".75"/>
-    <path d="M78 136 C108 108, 146 102, 184 84 S236 62, 248 48" fill="none" stroke="#0ea5e9" stroke-width="6" stroke-linecap="round"/>
-    <circle cx="248" cy="48" r="8" fill="#0ea5e9"/>
-    </svg></div>
-      <p><strong>Produto:</strong> lista com 5 indicadores socioeconômicos ligados ao acesso à informação escolar.</p>
-      <a class="btn" href="aula_07.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#0ea5e9;--accent2:#22c55e;">
-      <div class="pill revisao">Revisão</div>
-      <h3>Aula 8 — Indicadores ambientais e comunicação escolar</h3>
-      <p class="small"><strong>Data:</strong> 25/05/2026 • <strong>Semana:</strong> 4</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico colorido">
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <rect x="52" y="44" width="220" height="134" rx="14" fill="#fff" stroke="#0ea5e9" stroke-width="6"/>
-    <rect x="84" y="126" width="28" height="34" rx="8" fill="#f59e0b"/>
-    <rect x="128" y="98" width="28" height="62" rx="8" fill="#22c55e"/>
-    <rect x="172" y="78" width="28" height="82" rx="8" fill="#0ea5e9"/>
-    <rect x="216" y="58" width="28" height="102" rx="8" fill="#22c55e" opacity=".75"/>
-    <path d="M78 136 C108 108, 146 102, 184 84 S236 62, 248 48" fill="none" stroke="#0ea5e9" stroke-width="6" stroke-linecap="round"/>
-    <circle cx="248" cy="48" r="8" fill="#0ea5e9"/>
-    </svg></div>
-      <p><strong>Produto:</strong> lista com 5 indicadores ambientais ligados à circulação dos avisos.</p>
-      <a class="btn" href="aula_08.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#16a34a;--accent2:#f59e0b;">
-      <div class="pill hoje">Do dia</div>
-      <h3>Aula 9 — Tecnologias Sociais aplicadas à Central de Avisos</h3>
-      <p class="small"><strong>Data:</strong> 01/06/2026 • <strong>Semana:</strong> 5</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lâmpada de ideias">
-    <rect width="320" height="220" rx="24" fill="#fffdf5"/>
-    <circle cx="160" cy="86" r="48" fill="#0ea5e9" opacity=".26"/>
-    <path d="M160 38 C126 38 100 62 100 94 c0 22 13 35 26 47 c8 8 12 16 12 24 h44 c0-8 4-16 12-24 c13-12 26-25 26-47 c0-32-26-56-60-56z" fill="#16a34a"/>
-    <rect x="136" y="164" width="48" height="16" rx="8" fill="#f59e0b"/>
-    <path d="M160 10 v18 M214 30 l-12 12 M106 30 l12 12 M238 84 h-18 M82 84 h18" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
-    </svg></div>
-      <p><strong>Produto:</strong> definição curta de tecnologia social + 3 características.</p>
-      <a class="btn" href="aula_09.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#16a34a;--accent2:#f59e0b;">
-      <div class="pill hoje">Do dia</div>
-      <h3>Aula 10 — Inovação Social e o papel da Central de Avisos</h3>
-      <p class="small"><strong>Data:</strong> 01/06/2026 • <strong>Semana:</strong> 5</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#16a34a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#0ea5e9" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#f59e0b" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#16a34a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#0ea5e9" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> texto curto explicando por que a Central de Avisos pode ser uma inovação social.</p>
-      <a class="btn" href="aula_10.html">Abrir aula</a>
-    </article>
-    <article class="lesson-card" style="--accent1:#8b5cf6;--accent2:#ec4899;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 11 — Design Thinking para organizar soluções</h3>
-      <p class="small"><strong>Data:</strong> 08/06/2026 • <strong>Semana:</strong> 6</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lâmpada de ideias">
-    <rect width="320" height="220" rx="24" fill="#fffdf5"/>
-    <circle cx="160" cy="86" r="48" fill="#22c55e" opacity=".26"/>
-    <path d="M160 38 C126 38 100 62 100 94 c0 22 13 35 26 47 c8 8 12 16 12 24 h44 c0-8 4-16 12-24 c13-12 26-25 26-47 c0-32-26-56-60-56z" fill="#8b5cf6"/>
-    <rect x="136" y="164" width="48" height="16" rx="8" fill="#ec4899"/>
-    <path d="M160 10 v18 M214 30 l-12 12 M106 30 l12 12 M238 84 h-18 M82 84 h18" stroke="#ec4899" stroke-width="8" stroke-linecap="round"/>
-    </svg></div>
-      <p><strong>Produto:</strong> ficha com problema, público, necessidade e ideia de melhoria.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#8b5cf6;--accent2:#ec4899;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 12 — Aplicando o Design Thinking à Central de Avisos</h3>
-      <p class="small"><strong>Data:</strong> 08/06/2026 • <strong>Semana:</strong> 6</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lâmpada de ideias">
-    <rect width="320" height="220" rx="24" fill="#fffdf5"/>
-    <circle cx="160" cy="86" r="48" fill="#22c55e" opacity=".26"/>
-    <path d="M160 38 C126 38 100 62 100 94 c0 22 13 35 26 47 c8 8 12 16 12 24 h44 c0-8 4-16 12-24 c13-12 26-25 26-47 c0-32-26-56-60-56z" fill="#8b5cf6"/>
-    <rect x="136" y="164" width="48" height="16" rx="8" fill="#ec4899"/>
-    <path d="M160 10 v18 M214 30 l-12 12 M106 30 l12 12 M238 84 h-18 M82 84 h18" stroke="#ec4899" stroke-width="8" stroke-linecap="round"/>
-    </svg></div>
-      <p><strong>Produto:</strong> quadro com problema, necessidade, ideia e possível melhoria.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#10b981;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 13 — Kanban para organizar tarefas do projeto</h3>
-      <p class="small"><strong>Data:</strong> 15/06/2026 • <strong>Semana:</strong> 7</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f97316" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#10b981" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f97316" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> quadro Kanban com colunas “a fazer”, “fazendo” e “pronto”.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 14 — Organização do fluxo de trabalho da Central de Avisos</h3>
-      <p class="small"><strong>Data:</strong> 15/06/2026 • <strong>Semana:</strong> 7</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> lista de tarefas da Central distribuídas no Kanban.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 15 — Revisão guiada do 2º bimestre</h3>
-      <p class="small"><strong>Data:</strong> 22/06/2026 • <strong>Semana:</strong> 8</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> mapa-resumo com os conceitos do bimestre.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 16 — Avaliação bimestral do percurso do projeto</h3>
-      <p class="small"><strong>Data:</strong> 22/06/2026 • <strong>Semana:</strong> 8</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> atividade individual de síntese do 2º bimestre.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#7c3aed;--accent2:#0ea5e9;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 17 — Diamante Triplo em linguagem simples</h3>
-      <p class="small"><strong>Data:</strong> 29/06/2026 • <strong>Semana:</strong> 9</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f59e0b" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#0ea5e9" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#7c3aed" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f59e0b" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> esquema visual do Diamante Triplo.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#7c3aed;--accent2:#0ea5e9;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 18 — Aplicando o Diamante Triplo à Central de Avisos</h3>
-      <p class="small"><strong>Data:</strong> 29/06/2026 • <strong>Semana:</strong> 9</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#f59e0b" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#0ea5e9" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#7c3aed" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#f59e0b" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> esquema do Diamante Triplo preenchido com dados do projeto.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 19 — Etapas do Desenvolvimento Local — compreensão de contexto</h3>
-      <p class="small"><strong>Data:</strong> 06/07/2026 • <strong>Semana:</strong> 10</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> quadro com o que já sabemos sobre a escola e o problema.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 20 — Etapas do Desenvolvimento Local — experiência investigativa</h3>
-      <p class="small"><strong>Data:</strong> 06/07/2026 • <strong>Semana:</strong> 10</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> lista de hipóteses e procedimentos investigativos do projeto.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 21 — Etapas do Desenvolvimento Local — identificação e resolução de problemas</h3>
-      <p class="small"><strong>Data:</strong> 13/07/2026 • <strong>Semana:</strong> 11</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> frase-problema final do projeto.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    <article class="lesson-card" style="--accent1:#2563eb;--accent2:#7c3aed;">
-      <div class="pill embreve">Em breve</div>
-      <h3>Aula 22 — Etapas do Desenvolvimento Local — planejamento e comunicação</h3>
-      <p class="small"><strong>Data:</strong> 13/07/2026 • <strong>Semana:</strong> 11</p>
-      <div style="margin:12px 0 14px"><svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escola colorida">
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-    <rect width="320" height="220" rx="24" fill="#f8fbff"/>
-    <circle cx="266" cy="54" r="22" fill="#14b8a6" opacity=".18"/>
-    <rect x="62" y="82" width="196" height="96" rx="10" fill="url(#g1)"/>
-    <rect x="86" y="46" width="148" height="48" rx="10" fill="#7c3aed" opacity=".88"/>
-    <rect x="145" y="128" width="32" height="50" rx="6" fill="#fff"/>
-    <rect x="92" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <rect x="200" y="100" width="28" height="22" rx="4" fill="#fff"/>
-    <path d="M60 84 L160 28 L260 84" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="30" y="178" width="260" height="12" rx="6" fill="#14b8a6" opacity=".25"/>
-    </svg></div>
-      <p><strong>Produto:</strong> síntese do 2º bimestre com proposta preliminar de intervenção.</p>
-      <span class="btn disabled">Em breve</span>
-    </article>
-    </div>
-  </section>
-
-  <footer>Material HTML colorido • Desenvolvimento Local • Projeto Central de Avisos</footer>
+<div class="hero">
+  <div class="hero-badge">🏫 EE Manoel Bonifácio Nunes da Cunha</div>
+  <h1>📡 Desenvolvimento Local</h1>
+  <h2>2º Bimestre 2026 — 2º Ano EM · Desenvolvedor de Algoritmos de ML</h2>
+  <div class="hero-info">
+    <span class="hero-pill">📅 04/05 → 16/07/2026</span>
+    <span class="hero-pill">📆 Toda Segunda-feira</span>
+    <span class="hero-pill">⏱ 2 tempos de 50 min</span>
+    <span class="hero-pill">📚 22 aulas · 11 semanas</span>
+  </div>
 </div>
+
+<div style="max-width:900px; margin:0 auto; padding:0 20px;">
+  <div class="projeto-card">
+    <h3>🚨 Projeto Âncora do Bimestre</h3>
+    <p class="projeto-desc">
+      Todas as aulas deste bimestre estão conectadas ao projeto <strong>Central de Avisos</strong> — uma solução de comunicação escolar desenvolvida por vocês. 
+      Você vai aprender a pesquisar, observar, planejar e usar metodologias reais de inovação para resolver um problema concreto da escola: 
+      <em>como melhorar a comunicação de provas, horários, prazos e comunicados</em> para toda a comunidade escolar.
+    </p>
+    <div class="projeto-tags">
+      <span class="tag tag-laranja">🔬 Pesquisa Científica</span>
+      <span class="tag tag-roxo">💡 Inovação Social</span>
+      <span class="tag tag-verde">🛠 Design Thinking</span>
+      <span class="tag tag-laranja">📋 Kanban</span>
+      <span class="tag tag-roxo">🏫 Desenvolvimento Local</span>
+    </div>
+  </div>
+</div>
+
+<div class="legenda">
+  <div class="leg-item"><div class="leg-dot revisao"></div> Aula Revisada (já passou)</div>
+  <div class="leg-item"><div class="leg-dot hoje"></div> Aula de Hoje (01/06)</div>
+  <div class="leg-item"><div class="leg-dot breve"></div> Em Breve (próximas)</div>
+</div>
+
+<div class="semanas-grid">
+
+  <!-- SEMANA 1 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 1 — 04 de maio de 2026</div>
+    <div class="aulas-row">
+      <a href="aula01.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 1 · 1º Tempo</div>
+        <h4>Tipos de abordagem de pesquisa: qualitativa, quantitativa e quali-quantitativa</h4>
+        <p>Diferenças entre observar opiniões, contar ocorrências e combinar os dois tipos.</p>
+      </a>
+      <a href="aula02.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 2 · 2º Tempo</div>
+        <h4>Aplicando as abordagens de pesquisa ao problema da comunicação escolar</h4>
+        <p>Escolha da abordagem de acordo com o tipo de pergunta da pesquisa.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 2 — 11 de maio de 2026</div>
+    <div class="aulas-row">
+      <a href="aula03.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 3 · 1º Tempo</div>
+        <h4>Método Científico em linguagem simples</h4>
+        <p>Observação, hipótese, coleta, análise e conclusão aplicados ao projeto.</p>
+      </a>
+      <a href="aula04.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 4 · 2º Tempo</div>
+        <h4>Método de Engenharia e Ciências Sociais no projeto</h4>
+        <p>Diferenças entre investigar, testar solução e compreender contexto.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 3 — 18 de maio de 2026</div>
+    <div class="aulas-row">
+      <a href="aula05.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 5 · 1º Tempo</div>
+        <h4>A escola como laboratório vivo</h4>
+        <p>Mapa de atores, espaços e fluxos de informação da escola.</p>
+      </a>
+      <a href="aula06.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 6 · 2º Tempo</div>
+        <h4>Observação do contexto escolar e circulação dos avisos</h4>
+        <p>Leitura prática do ambiente escolar e pontos de falha na comunicação.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 4 — 25 de maio de 2026</div>
+    <div class="aulas-row">
+      <a href="aula07.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 7 · 1º Tempo</div>
+        <h4>Indicadores socioeconômicos em linguagem simples</h4>
+        <p>Condições de vida e acesso à comunicação escolar.</p>
+      </a>
+      <a href="aula08.html" class="aula-card revisao">
+        <span class="status-badge">✅ Revisão</span>
+        <div class="aula-num-label">AULA 8 · 2º Tempo</div>
+        <h4>Indicadores ambientais e comunicação escolar</h4>
+        <p>Ambiente físico, transporte, barulho, iluminação e acesso.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- SEMANA 5 — HOJE! -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 5 — 01 de junho de 2026 · HOJE</div>
+    <div class="aulas-row">
+      <a href="aula09.html" class="aula-card hoje hoje-glow">
+        <span class="status-badge">🔥 Aula de Hoje</span>
+        <div class="aula-num-label">AULA 9 · 1º Tempo</div>
+        <h4>Tecnologias Sociais aplicadas à Central de Avisos</h4>
+        <p>Soluções simples, úteis, acessíveis e voltadas ao bem coletivo.</p>
+      </a>
+      <a href="aula10.html" class="aula-card hoje hoje-glow" style="margin-top: 0;">
+        <span class="status-badge">🔥 Aula de Hoje</span>
+        <div class="aula-num-label">AULA 10 · 2º Tempo</div>
+        <h4>Inovação Social e o papel da Central de Avisos</h4>
+        <p>Nova forma de resolver problema real da comunidade escolar.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- SEMANA 6 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 6 — 08 de junho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 11 · 1º Tempo</div>
+        <h4>Design Thinking para organizar soluções</h4>
+        <p>Pensar soluções com foco nas pessoas.</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 12 · 2º Tempo</div>
+        <h4>Aplicando o Design Thinking à Central de Avisos</h4>
+        <p>Organização da solução do projeto.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 7 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 7 — 15 de junho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 13 · 1º Tempo</div>
+        <h4>Kanban para organizar tarefas do projeto</h4>
+        <p>Organização visual de tarefas com colunas "a fazer", "fazendo" e "pronto".</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 14 · 2º Tempo</div>
+        <h4>Organização do fluxo de trabalho da Central de Avisos</h4>
+        <p>Planejamento de execução e sequência lógica de ações.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 8 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 8 — 22 de junho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 15 · 1º Tempo</div>
+        <h4>Revisão guiada do 2º bimestre</h4>
+        <p>Mapa-resumo com todos os conceitos do bimestre.</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 16 · 2º Tempo</div>
+        <h4>Avaliação bimestral do percurso do projeto</h4>
+        <p>Atividade individual de síntese do 2º bimestre.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 9 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 9 — 29 de junho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 17 · 1º Tempo</div>
+        <h4>Diamante Triplo em linguagem simples</h4>
+        <p>Compreender, definir, desenvolver e comunicar.</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 18 · 2º Tempo</div>
+        <h4>Aplicando o Diamante Triplo à Central de Avisos</h4>
+        <p>Uso prático do método no desenvolvimento local.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 10 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 10 — 06 de julho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 19 · 1º Tempo</div>
+        <h4>Etapas do Desenvolvimento Local — compreensão de contexto</h4>
+        <p>Quadro com o que já sabemos sobre a escola e o problema.</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 20 · 2º Tempo</div>
+        <h4>Etapas do Desenvolvimento Local — experiência investigativa</h4>
+        <p>Lista de hipóteses e procedimentos investigativos do projeto.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 11 -->
+  <div class="semana-bloco">
+    <div class="semana-titulo">Semana 11 — 13 de julho de 2026</div>
+    <div class="aulas-row">
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 21 · 1º Tempo</div>
+        <h4>Etapas do Desenvolvimento Local — identificação e resolução de problemas</h4>
+        <p>Frase-problema final do projeto com base nos dados coletados.</p>
+      </div>
+      <div class="aula-card breve">
+        <span class="status-badge">🔒 Em Breve</span>
+        <div class="aula-num-label">AULA 22 · 2º Tempo</div>
+        <h4>Etapas do Desenvolvimento Local — planejamento e comunicação</h4>
+        <p>Síntese do 2º bimestre com proposta preliminar de intervenção.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /semanas-grid -->
+
+<footer>
+  <p>📡 <strong>Central de Avisos</strong> · Desenvolvimento Local · 2º Ano EM</p>
+  <p style="margin-top:6px;">EE Manoel Bonifácio Nunes da Cunha — Campo Grande, MS · 2026</p>
+</footer>
+
 </body>
 </html>

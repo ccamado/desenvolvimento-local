@@ -1,0 +1,303 @@
+/* =============================================
+   DESENVOLVIMENTO LOCAL — 2º BIMESTRE 2026
+   EE Manoel Bonifácio Nunes da Cunha
+   Paleta: Laranja vibrante + Roxo profundo + Branco
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --laranja: #FF6B35;
+  --laranja-claro: #FFB347;
+  --roxo: #6B21A8;
+  --roxo-claro: #A855F7;
+  --roxo-escuro: #3B0764;
+  --verde: #22C55E;
+  --azul: #3B82F6;
+  --vermelho: #EF4444;
+  --amarelo: #FBBF24;
+  --branco: #FFFFFF;
+  --cinza-claro: #F8F4FF;
+  --cinza: #E5E7EB;
+  --texto: #1F0A3C;
+  --sombra: 0 8px 32px rgba(107,33,168,0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cinza-claro);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+/* ======= HEADER ======= */
+.site-header {
+  background: linear-gradient(135deg, var(--roxo-escuro) 0%, var(--roxo) 60%, var(--laranja) 100%);
+  padding: 24px 32px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,107,53,0.25);
+  border-radius: 50%;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -30px;
+  width: 150px; height: 150px;
+  background: rgba(168,85,247,0.2);
+  border-radius: 50%;
+}
+.header-badge {
+  display: inline-block;
+  background: var(--laranja);
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.site-header h1 {
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+.site-header p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ======= BOTÃO VOLTAR ======= */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--roxo);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(107,33,168,0.2);
+  transition: all 0.3s;
+  margin: 20px 32px;
+  border: none;
+  cursor: pointer;
+}
+.btn-back:hover { background: var(--roxo); color: white; transform: translateX(-4px); }
+
+/* ======= CARDS DE STATUS ======= */
+.status-revisao { --cor: #6B7280; --bg: #F3F4F6; }
+.status-hoje    { --cor: var(--laranja); --bg: #FFF7ED; }
+.status-breve   { --cor: #9CA3AF; --bg: #F9FAFB; }
+
+/* ======= QUIZ ======= */
+.quiz-section {
+  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+  border-radius: 20px;
+  padding: 32px;
+  margin: 24px 0;
+  color: white;
+}
+.quiz-section h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 8px; }
+.quiz-progress { height: 8px; background: rgba(255,255,255,0.2); border-radius: 10px; margin: 16px 0; overflow: hidden; }
+.quiz-progress-bar { height: 100%; background: var(--laranja); border-radius: 10px; transition: width 0.5s; }
+.quiz-score { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.quiz-question { font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; line-height: 1.4; }
+.quiz-options { display: grid; gap: 12px; }
+.quiz-option {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 14px 20px;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.quiz-option:hover:not(:disabled) { background: rgba(255,255,255,0.2); transform: translateX(4px); }
+.quiz-option.correta { background: rgba(34,197,94,0.4); border-color: var(--verde); }
+.quiz-option.errada  { background: rgba(239,68,68,0.4);  border-color: var(--vermelho); }
+.quiz-option:disabled { cursor: default; }
+.quiz-feedback { margin-top: 16px; padding: 12px 16px; border-radius: 10px; font-weight: 700; font-size: 1rem; }
+.quiz-feedback.ok  { background: rgba(34,197,94,0.3);  border-left: 4px solid var(--verde); }
+.quiz-feedback.err { background: rgba(239,68,68,0.3);  border-left: 4px solid var(--vermelho); }
+.btn-quiz {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--laranja);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(255,107,53,0.4);
+}
+.btn-quiz:hover { background: var(--laranja-claro); transform: scale(1.04); }
+.quiz-result {
+  text-align: center;
+  padding: 32px;
+}
+.quiz-result .score-big { font-family: 'Fredoka One', cursive; font-size: 4rem; color: var(--amarelo); }
+.quiz-result .score-msg { font-size: 1.2rem; margin-top: 8px; }
+.stars { font-size: 2.5rem; margin: 12px 0; }
+
+/* ======= CONTEÚDO DA AULA ======= */
+.aula-container { max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
+
+.aula-hero {
+  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo), var(--laranja));
+  border-radius: 24px;
+  padding: 40px;
+  color: white;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.aula-hero::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 250px; height: 250px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.aula-num { font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 2px; opacity: 0.8; margin-bottom: 8px; }
+.aula-hero h1 { font-family: 'Fredoka One', cursive; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.2; position: relative; z-index: 1; }
+.aula-hero .aula-meta { margin-top: 16px; display: flex; gap: 16px; flex-wrap: wrap; opacity: 0.9; font-size: 0.9rem; }
+.aula-meta span { background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; }
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--sombra);
+  border-left: 6px solid var(--laranja);
+}
+.card.roxo { border-left-color: var(--roxo-claro); }
+.card.verde { border-left-color: var(--verde); }
+.card.azul  { border-left-color: var(--azul); }
+
+.card h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--roxo);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji-icon { font-size: 1.5rem; }
+
+.conceito-box {
+  background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+  border: 2px solid var(--roxo-claro);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.conceito-box strong { color: var(--roxo); font-size: 1.05rem; }
+
+.destaque {
+  background: linear-gradient(90deg, #FFF7ED, #FFEDD5);
+  border-left: 4px solid var(--laranja);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
+  margin: 14px 0;
+  font-weight: 600;
+}
+
+.caderno-section {
+  background: linear-gradient(135deg, #FEFCE8, #FEF9C3);
+  border: 2px dashed var(--amarelo);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  position: relative;
+}
+.caderno-section::before {
+  content: '📓';
+  position: absolute;
+  top: -16px; left: 20px;
+  font-size: 2rem;
+  background: var(--cinza-claro);
+  padding: 0 6px;
+}
+.caderno-section h3 { color: #92400E; font-size: 1.1rem; margin-bottom: 12px; margin-top: 6px; }
+.caderno-section ol { padding-left: 20px; }
+.caderno-section ol li { margin-bottom: 8px; color: #451a03; font-weight: 600; line-height: 1.5; }
+
+.tabela { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.tabela th { background: var(--roxo); color: white; padding: 12px 16px; text-align: left; font-size: 0.95rem; }
+.tabela td { padding: 12px 16px; border-bottom: 1px solid #E9D5FF; font-size: 0.9rem; }
+.tabela tr:nth-child(even) td { background: #F5F3FF; }
+.tabela tr:first-child th:first-child { border-radius: 10px 0 0 0; }
+.tabela tr:first-child th:last-child  { border-radius: 0 10px 0 0; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.mini-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  border: 2px solid var(--cinza);
+  text-align: center;
+  transition: all 0.3s;
+}
+.mini-card:hover { border-color: var(--laranja); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(255,107,53,0.15); }
+.mini-card .icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+.mini-card h4 { color: var(--roxo); font-size: 1rem; margin-bottom: 6px; }
+.mini-card p  { color: #6B7280; font-size: 0.85rem; }
+
+.tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 3px;
+}
+.tag-laranja { background: #FFF7ED; color: var(--laranja); border: 1px solid var(--laranja); }
+.tag-roxo    { background: #F5F3FF; color: var(--roxo);   border: 1px solid var(--roxo-claro); }
+.tag-verde   { background: #F0FDF4; color: #16A34A;        border: 1px solid #86EFAC; }
+
+/* Animações */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.aula-hero, .card, .quiz-section, .caderno-section {
+  animation: fadeInUp 0.5s ease both;
+}
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.3s; }
