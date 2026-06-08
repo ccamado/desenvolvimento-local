@@ -29,6 +29,13 @@
     <div class="conceito-box"><strong>Conceito central:</strong> aplicar o Design Thinking significa ligar problema, necessidade, ideia e possível melhoria em um mesmo raciocínio de solução.</div>
     <p>O foco da aula é sair da reflexão e entrar na organização concreta da proposta da Central de Avisos, sempre considerando a realidade dos estudantes e da escola.</p>
   </div>
+  <div class="card verde">
+    <h2>📋 Quadro aplicado ao projeto</h2>
+    <div class="conceito-box"><strong>Problema:</strong> parte dos alunos perde informações importantes da escola.</div>
+    <div class="conceito-box"><strong>Necessidade:</strong> melhorar a circulação da informação com mais clareza e organização.</div>
+    <div class="conceito-box"><strong>Ideia:</strong> organizar uma Central de Avisos mais simples e fácil de consultar.</div>
+    <div class="conceito-box"><strong>Possível melhoria:</strong> tornar os avisos mais visíveis, mais acessíveis e mais úteis para os estudantes.</div>
+  </div>
   <div class="caderno-section">
     <h3>📝 Resumo para o Caderno — Aula 12</h3>
     <ol>
@@ -47,7 +54,65 @@
   <div class="quiz-section">
     <h2>🎮 Quiz — Aplicando o Design Thinking</h2>
     <p style="opacity:0.8;margin-bottom:16px">10 questões para testar seu conhecimento!</p>
+    <div id="quiz-inner"><p>Carregando quiz...</p></div>
   </div>
 </div>
+
+<footer style="text-align:center;padding:30px;color:#6B7280;font-size:0.85rem;border-top:2px solid #E5E7EB;margin-top:40px;">
+  <p>Central de Avisos - Desenvolvimento Local - 2 Ano EM - EE MBNC - 2026</p>
+</footer>
+
+<script>
+var PERGUNTAS = [
+  {"q": "Aplicar o Design Thinking na Central de Avisos significa:", "o": ["Organizar a solução do projeto", "Mudar de disciplina", "Fazer apenas um desenho", "Ignorar o problema"], "c": 0, "e": "Aplicar o Design Thinking é transformar o problema em proposta de solução organizada."},
+  {"q": "Qual elemento NÃO faz parte do quadro da aula?", "o": ["Problema", "Necessidade", "Ideia", "Temperatura"], "c": 3, "e": "O quadro trabalha problema, necessidade, ideia e possível melhoria."},
+  {"q": "No projeto, a necessidade principal é:", "o": ["Mais murais coloridos", "Melhorar a circulação da informação escolar", "Trocar os professores", "Diminuir o recreio"], "c": 1, "e": "A necessidade central é melhorar a circulação da informação escolar."},
+  {"q": "A ideia do projeto está ligada a quê?", "o": ["Organizar os avisos de forma mais simples", "Apagar os comunicados", "Parar de registrar informações", "Usar apenas recados orais"], "c": 0, "e": "A ideia principal é organizar melhor os avisos da escola."},
+  {"q": "Uma possível melhoria precisa ser:", "o": ["Sem relação com a escola", "Coerente com a realidade da turma e da escola", "Muito complicada", "Apenas bonita"], "c": 1, "e": "A melhoria deve responder ao problema real da escola."},
+  {"q": "O problema da Central de Avisos está ligado a:", "o": ["Perda de informações escolares importantes", "Cor da parede", "Nome da disciplina", "Tamanho da quadra"], "c": 0, "e": "O foco do projeto é a falha de comunicação escolar."},
+  {"q": "O microproduto desta aula é:", "o": ["Um quadro com problema, necessidade, ideia e melhoria", "Um cartaz de festa", "Uma redação sobre férias", "Uma lista de presença"], "c": 0, "e": "Esse é o registro objetivo esperado ao final da aula."},
+  {"q": "Aplicar o Design Thinking ajuda a turma a:", "o": ["Transformar reflexão em ação planejada", "Encerrar a pesquisa", "Evitar organização", "Mudar o calendário"], "c": 0, "e": "O método ajuda a estruturar melhor a proposta do projeto."},
+  {"q": "No projeto, a solução precisa manter ligação com:", "o": ["O problema real da escola", "Somente a decoração", "Assuntos sem contexto", "Somente a internet"], "c": 0, "e": "A solução precisa nascer do problema investigado na escola."},
+  {"q": "Ao organizar problema, necessidade, ideia e melhoria, a turma está:", "o": ["Preparando as próximas etapas do bimestre", "Ignorando o projeto", "Repetindo o 1o bimestre", "Encerrando o ano letivo"], "c": 0, "e": "Essa organização prepara a continuidade do trabalho no projeto."}
+];
+var atual=0,pontos=0,respondidas=0;
+function mostrarPergunta(){
+  if(atual>=PERGUNTAS.length){mostrarResultado();return;}
+  var p=PERGUNTAS[atual];
+  document.getElementById('qprogbar').style.width=((atual/PERGUNTAS.length)*100)+'%';
+  document.getElementById('qnum').textContent=(atual+1)+' de '+PERGUNTAS.length;
+  document.getElementById('qtext').textContent=p.q;
+  var fb=document.getElementById('qfeedback');
+  fb.innerHTML='';fb.style.display='none';
+  document.getElementById('qnext').style.display='none';
+  var ops=document.getElementById('qoptions');
+  ops.innerHTML='';
+  p.o.forEach(function(op,i){
+    var btn=document.createElement('button');
+    btn.className='quiz-option';btn.textContent=op;
+    btn.onclick=function(){responder(i,p.c,p.e);};
+    ops.appendChild(btn);
+  });
+}
+function responder(i,correto,explicacao){
+  var btns=document.querySelectorAll('.quiz-option');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[correto].classList.add('correta');
+  var fb=document.getElementById('qfeedback');
+  if(i===correto){pontos++;fb.className='quiz-feedback ok';fb.textContent='Correto! '+explicacao;}
+  else{btns[i].classList.add('errada');fb.className='quiz-feedback err';fb.textContent='Ops! '+explicacao;}
+  fb.style.display='block';respondidas++;
+  document.getElementById('qnext').style.display='inline-block';
+  document.getElementById('qscore').textContent='Pontos: '+pontos+'/'+respondidas;
+}
+function proximaPergunta(){atual++;mostrarPergunta();}
+function mostrarResultado(){
+  var total=PERGUNTAS.length,perc=Math.round((pontos/total)*100);
+  var msg=perc>=90?'Excelente!':perc>=70?'Muito bem!':perc>=50?'Bom trabalho!':'Revise e tente de novo!';
+  document.getElementById('quiz-inner').innerHTML="<div class='quiz-result'><div class='score-big'>"+pontos+'/'+total+"</div><div class='score-msg'>"+msg+' '+perc+"% de acertos</div><button class='btn-quiz' style='margin-top:24px' onclick='location.reload()'>Tentar Novamente</button></div>";
+}
+var qHTML="<div class='quiz-progress'><div class='quiz-progress-bar' id='qprogbar' style='width:0%'></div></div><div class='quiz-score' id='qscore'>Pontos: 0/0</div><div style='font-size:0.85rem;opacity:0.7;margin-bottom:12px' id='qnum'></div><div class='quiz-question' id='qtext'></div><div class='quiz-options' id='qoptions'></div><div id='qfeedback' class='quiz-feedback' style='display:none'></div><button class='btn-quiz' id='qnext' onclick='proximaPergunta()' style='display:none'>Proxima</button>";
+window.onload=function(){document.getElementById('quiz-inner').innerHTML=qHTML;mostrarPergunta();};
+</script>
 </body>
 </html>
