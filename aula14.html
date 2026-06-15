@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 14 - Organização do fluxo de trabalho da Central de Avisos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="index.html" class="btn-back">&#8592; Voltar ao Menu</a>
+<div class="aula-container">
+  <div class="aula-hero" style="border: 4px solid var(--laranja-claro);">
+    <div class="aula-num" style="background:rgba(255,179,71,0.3);padding:6px 16px;border-radius:20px;display:inline-block;margin-bottom:12px;">AULA 14 - 2 Tempo - 15/06/2026 - AULA DE HOJE!</div>
+    <h1>&#128736; Organização do fluxo de trabalho da Central de Avisos</h1>
+    <div class="aula-meta"><span>15 de junho de 2026</span><span>50 minutos</span><span>Central de Avisos</span><span>Desenvolvimento Local</span></div>
+  </div>
+
+  <div class="card" style="border-left-color:var(--laranja);background:linear-gradient(135deg,#FFF7ED,#FFEDD5);">
+    <h2><span class="emoji-icon">&#127919;</span> O que vamos fazer hoje?</h2>
+    <p>Nesta aula, vamos transformar o quadro Kanban em um <strong>fluxo de trabalho</strong>. Isso significa colocar as microentregas da Central de Avisos em uma ordem lógica, entendendo o que vem primeiro, o que depende de outra etapa e como saber se uma tarefa ficou pronta.</p>
+    <div class="destaque" style="border-color:var(--laranja)">Aplicação no projeto: organizar a sequência de melhorias do <strong>index.html</strong> antes de ligar o chat às consultas reais da planilha MASTER.</div>
+  </div>
+
+  <div class="card roxo">
+    <h2><span class="emoji-icon">&#128161;</span> Fluxo de trabalho em linguagem simples</h2>
+    <div class="conceito-box" style="border-color:var(--laranja)"><strong>Conceito central:</strong> fluxo de trabalho é a ordem combinada das etapas de um projeto, mostrando o caminho entre a ideia, a execução, o teste e a entrega.</div>
+    <p style="margin-top:16px">Um projeto não avança apenas com boas ideias. Ele precisa de tarefas pequenas, uma ordem clara e critérios de pronto que qualquer pessoa da equipe consiga entender.</p>
+    <div class="grid-2" style="margin-top:16px">
+      <div class="mini-card"><span class="icon">&#128269;</span><h4>Entender</h4><p>Qual problema da comunicação escolar estamos tentando resolver?</p></div>
+      <div class="mini-card"><span class="icon">&#128221;</span><h4>Planejar</h4><p>Quais microentregas precisam entrar primeiro?</p></div>
+      <div class="mini-card"><span class="icon">&#128295;</span><h4>Construir</h4><p>O que será alterado no index.html em cada etapa?</p></div>
+      <div class="mini-card"><span class="icon">&#9989;</span><h4>Testar</h4><p>Como confirmar que a melhoria funcionou para o usuário?</p></div>
+    </div>
+  </div>
+
+  <div class="card verde">
+    <h2><span class="emoji-icon">&#128204;</span> Ordem sugerida das microentregas</h2>
+    <table class="tabela">
+      <tr><th>Ordem</th><th>Microentrega</th><th>Critério de pronto</th></tr>
+      <tr><td>1</td><td>Indicador "Processando..."</td><td>O usuário vê que o bot está respondendo.</td></tr>
+      <tr><td>2</td><td>Botão "Limpar conversa"</td><td>A conversa some da tela ao clicar no botão.</td></tr>
+      <tr><td>3</td><td>Botões de perguntas prontas</td><td>O clique coloca uma pergunta no chat ou dispara a pergunta.</td></tr>
+      <tr><td>4</td><td>Hora HH:mm em cada mensagem</td><td>Cada mensagem aparece com horário legível.</td></tr>
+      <tr><td>5</td><td>Histórico com localStorage</td><td>A conversa permanece ao atualizar a página.</td></tr>
+      <tr><td>6</td><td>Painel "O que posso perguntar?"</td><td>O usuário encontra exemplos claros e clicáveis.</td></tr>
+    </table>
+    <div class="destaque">Regra permanente do projeto: o sistema deve consultar dados reais e devolver respostas organizadas, sem inventar informação.</div>
+  </div>
+
+  <div class="card roxo">
+    <h2><span class="emoji-icon">&#128203;</span> Kanban estruturado da Central de Avisos</h2>
+    <p>Este é o quadro de referência para a turma usar hoje. Ele já vem organizado com tarefas, ordem de execução e critério de pronto.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
+      <div style="background:#F5F3FF;border:2px solid #C4B5FD;border-radius:16px;padding:14px;">
+        <h3 style="color:var(--roxo);font-size:1rem;margin-bottom:10px;">A FAZER</h3>
+        <div style="background:white;border-radius:12px;padding:12px;margin-bottom:10px;border-left:5px solid var(--roxo-claro);">
+          <strong>3. Perguntas prontas</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Pronto quando o clique preencher ou enviar a pergunta.</span>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;margin-bottom:10px;border-left:5px solid var(--roxo-claro);">
+          <strong>5. Histórico local</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Pronto quando a conversa continuar após atualizar a página.</span>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;border-left:5px solid var(--roxo-claro);">
+          <strong>6. Painel de exemplos</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Pronto quando os exemplos forem claros e clicáveis.</span>
+        </div>
+      </div>
+      <div style="background:#FFF7ED;border:2px solid #FDBA74;border-radius:16px;padding:14px;">
+        <h3 style="color:var(--laranja);font-size:1rem;margin-bottom:10px;">FAZENDO</h3>
+        <div style="background:white;border-radius:12px;padding:12px;margin-bottom:10px;border-left:5px solid var(--laranja);">
+          <strong>1. Processando...</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Pronto quando aparece enquanto o bot responde.</span>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;border-left:5px solid var(--laranja);">
+          <strong>2. Limpar conversa</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Pronto quando limpa a tela sem quebrar o chat.</span>
+        </div>
+      </div>
+      <div style="background:#F0FDF4;border:2px solid #86EFAC;border-radius:16px;padding:14px;">
+        <h3 style="color:#16A34A;font-size:1rem;margin-bottom:10px;">PRONTO</h3>
+        <div style="background:white;border-radius:12px;padding:12px;margin-bottom:10px;border-left:5px solid var(--verde);">
+          <strong>MVP 0 aberto</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">index.html já mostra a tela inicial do chat.</span>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;border-left:5px solid var(--verde);">
+          <strong>Resposta mock</strong><br>
+          <span style="font-size:0.85rem;color:#6B7280;">Main.gs já devolve resposta de teste.</span>
+        </div>
+      </div>
+    </div>
+    <div class="destaque" style="margin-top:18px;">Atividade: cada grupo escolhe uma tarefa do quadro e escreve no caderno o bloco que será alterado, o critério de pronto e o teste que comprova que funcionou.</div>
+  </div>
+
+  <div class="card azul">
+    <h2><span class="emoji-icon">&#128274;</span> Desenvolvimento Local, LGPD e impacto</h2>
+    <p>Mesmo quando a aula parece técnica, Desenvolvimento Local ajuda a fazer três perguntas importantes:</p>
+    <div class="conceito-box"><strong>1. Problema real:</strong> essa melhoria ajuda a comunicação da escola?</div>
+    <div class="conceito-box"><strong>2. Cuidado com dados:</strong> a solução evita expor informações pessoais desnecessárias?</div>
+    <div class="conceito-box"><strong>3. Impacto:</strong> alunos, professores e equipe escolar conseguem usar a solução com mais clareza?</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji-icon">&#128203;</span> Microproduto da aula</h2>
+    <div class="conceito-box"><strong>Produto do dia:</strong> uma lista ordenada das 6 microentregas do index.html, cada uma com um critério de pronto e um teste simples.</div>
+    <p>Esse registro prepara a turma para começar as alterações pequenas no HTML, seguindo a regra: alterar pouco, testar sempre e explicar cada mudança.</p>
+  </div>
+
+  <div class="caderno-section">
+    <h3>Resumo para o Caderno - Aula 14</h3>
+    <ol>
+      <li>Fluxo de trabalho é a ordem das etapas de um projeto.</li>
+      <li>Depois de montar o Kanban, precisamos decidir a sequência das tarefas.</li>
+      <li>A Central de Avisos será construída por microentregas pequenas e testáveis.</li>
+      <li>O indicador "Processando..." melhora a percepção de resposta do bot.</li>
+      <li>O botão "Limpar conversa" ajuda o usuário a recomeçar o atendimento.</li>
+      <li>As perguntas prontas e o painel de exemplos ajudam a orientar o usuário.</li>
+      <li>A hora nas mensagens e o histórico organizam melhor a conversa.</li>
+      <li>Cada tarefa precisa ter um critério de pronto.</li>
+      <li>O sistema não deve inventar avisos, horários, provas ou eventos.</li>
+      <li>O microproduto da aula é uma sequência das microentregas com critérios de teste.</li>
+    </ol>
+  </div>
+
+  <div class="quiz-section">
+    <h2>&#127918; Quiz - Fluxo de trabalho</h2>
+    <p style="opacity:0.8;margin-bottom:16px">10 questões para testar seu conhecimento!</p>
+    <div id="quiz-inner"><p>Carregando quiz...</p></div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:30px;color:#6B7280;font-size:0.85rem;border-top:2px solid #E5E7EB;margin-top:40px;">
+  <p>Central de Avisos - Desenvolvimento Local - 2 Ano EM - EE MBNC - 2026</p>
+</footer>
+
+<script>
+var PERGUNTAS = [
+  {"q":"O que é fluxo de trabalho?","o":["A ordem das etapas de um projeto","Uma lista sem ordem","Uma prova final","Um aviso inventado"],"c":0,"e":"Fluxo de trabalho mostra o caminho entre planejar, construir, testar e entregar."},
+  {"q":"Por que organizar a sequência das microentregas?","o":["Para saber o que vem primeiro e testar melhor","Para confundir a equipe","Para apagar o Kanban","Para mudar de projeto"],"c":0,"e":"A sequência ajuda a turma a trabalhar com clareza."},
+  {"q":"Qual microentrega ajuda o usuário a perceber que o bot está respondendo?","o":["Indicador Processando","Histórico apagado","Aviso falso","Troca de professor"],"c":0,"e":"O indicador Processando melhora a experiência de espera."},
+  {"q":"Um critério de pronto serve para:","o":["Saber se a tarefa foi concluída de verdade","Evitar testes","Ignorar erros","Copiar sem entender"],"c":0,"e":"Critério de pronto deixa claro quando a entrega está finalizada."},
+  {"q":"O painel 'O que posso perguntar?' ajuda em qual ponto?","o":["Orientar o usuário com exemplos","Esconder as perguntas","Excluir o chat","Criar dados pessoais"],"c":0,"e":"O painel oferece exemplos clicáveis e deixa o chat mais fácil de usar."},
+  {"q":"A hora HH:mm em cada mensagem melhora:","o":["A organização da conversa","A cor da página apenas","A chamada dos alunos","A nota automática"],"c":0,"e":"A hora torna o histórico da conversa mais organizado."},
+  {"q":"localStorage será usado para:","o":["Guardar histórico no navegador","Consultar a planilha MASTER","Enviar e-mail","Apagar a escola"],"c":0,"e":"localStorage guarda dados localmente no navegador."},
+  {"q":"Qual regra do projeto evita respostas falsas?","o":["Não inventar informação","Responder qualquer coisa","Ignorar a planilha","Misturar turmas"],"c":0,"e":"O sistema deve responder com base em dados reais."},
+  {"q":"Desenvolvimento Local ajuda a verificar:","o":["Problema real, cuidado com dados e impacto","Somente cores do site","Apenas programação avançada","Somente jogos"],"c":0,"e":"A disciplina conecta a solução à realidade da escola."},
+  {"q":"O microproduto desta aula é:","o":["Sequência de microentregas com critérios de teste","Um arquivo Main.gs novo","Uma planilha sem dados","Uma pesquisa sem registro"],"c":0,"e":"A aula organiza as próximas ações do index.html."}
+];
+var atual=0,pontos=0,respondidas=0;
+function mostrarPergunta(){
+  if(atual>=PERGUNTAS.length){mostrarResultado();return;}
+  var p=PERGUNTAS[atual];
+  document.getElementById("qprogbar").style.width=((atual/PERGUNTAS.length)*100)+"%";
+  document.getElementById("qnum").textContent=(atual+1)+" de "+PERGUNTAS.length;
+  document.getElementById("qtext").textContent=p.q;
+  var fb=document.getElementById("qfeedback");
+  fb.innerHTML="";fb.style.display="none";
+  document.getElementById("qnext").style.display="none";
+  var ops=document.getElementById("qoptions");
+  ops.innerHTML="";
+  p.o.forEach(function(op,i){
+    var btn=document.createElement("button");
+    btn.className="quiz-option";btn.textContent=op;
+    btn.onclick=function(){responder(i,p.c,p.e);};
+    ops.appendChild(btn);
+  });
+}
+function responder(i,correto,explicacao){
+  var btns=document.querySelectorAll(".quiz-option");
+  btns.forEach(function(b){b.disabled=true;});
+  btns[correto].classList.add("correta");
+  var fb=document.getElementById("qfeedback");
+  if(i===correto){pontos++;fb.className="quiz-feedback ok";fb.textContent="Correto! "+explicacao;}
+  else{btns[i].classList.add("errada");fb.className="quiz-feedback err";fb.textContent="Ops! "+explicacao;}
+  fb.style.display="block";respondidas++;
+  document.getElementById("qnext").style.display="inline-block";
+  document.getElementById("qscore").textContent="Pontos: "+pontos+"/"+respondidas;
+}
+function proximaPergunta(){atual++;mostrarPergunta();}
+function mostrarResultado(){
+  var total=PERGUNTAS.length,perc=Math.round((pontos/total)*100);
+  var msg=perc>=90?"Excelente!":perc>=70?"Muito bem!":perc>=50?"Bom trabalho!":"Revise e tente de novo!";
+  document.getElementById("quiz-inner").innerHTML="<div class='quiz-result'><div class='score-big'>"+pontos+"/"+total+"</div><div class='score-msg'>"+msg+" "+perc+"% de acertos</div><button class='btn-quiz' style='margin-top:24px' onclick='location.reload()'>Tentar Novamente</button></div>";
+}
+var qHTML="<div class='quiz-progress'><div class='quiz-progress-bar' id='qprogbar' style='width:0%'></div></div><div class='quiz-score' id='qscore'>Pontos: 0/0</div><div style='font-size:0.85rem;opacity:0.7;margin-bottom:12px' id='qnum'></div><div class='quiz-question' id='qtext'></div><div class='quiz-options' id='qoptions'></div><div id='qfeedback' class='quiz-feedback' style='display:none'></div><button class='btn-quiz' id='qnext' onclick='proximaPergunta()' style='display:none'>Proxima</button>";
+window.onload=function(){document.getElementById("quiz-inner").innerHTML=qHTML;mostrarPergunta();};
+</script>
+</body>
+</html>

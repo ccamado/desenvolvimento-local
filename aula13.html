@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 13 - Kanban para organizar tarefas do projeto</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="index.html" class="btn-back">&#8592; Voltar ao Menu</a>
+<div class="aula-container">
+  <div class="aula-hero" style="border: 4px solid var(--laranja-claro);">
+    <div class="aula-num" style="background:rgba(255,179,71,0.3);padding:6px 16px;border-radius:20px;display:inline-block;margin-bottom:12px;">AULA 13 - 1 Tempo - 15/06/2026 - AULA DE HOJE!</div>
+    <h1>&#128203; Kanban para organizar tarefas do projeto</h1>
+    <div class="aula-meta"><span>15 de junho de 2026</span><span>50 minutos</span><span>Central de Avisos</span><span>Desenvolvimento Local</span></div>
+  </div>
+
+  <div class="card" style="border-left-color:var(--laranja);background:linear-gradient(135deg,#FFF7ED,#FFEDD5);">
+    <h2><span class="emoji-icon">&#127919;</span> O que vamos fazer hoje?</h2>
+    <p>Hoje vamos usar o <strong>Kanban</strong> para organizar as próximas microentregas da <strong>Central de Avisos</strong>. A ideia é transformar um projeto grande em tarefas pequenas, visíveis e possíveis de acompanhar.</p>
+    <div class="destaque" style="border-color:var(--laranja)">Aplicação no projeto: montar um quadro com o que ainda precisa ser feito no <strong>index.html</strong>, o que está em andamento e o que já pode ser considerado pronto.</div>
+  </div>
+
+  <div class="card roxo">
+    <h2><span class="emoji-icon">&#128161;</span> O que é Kanban?</h2>
+    <div class="conceito-box" style="border-color:var(--laranja)"><strong>Conceito central:</strong> Kanban é um quadro visual usado para organizar tarefas em etapas simples, geralmente com as colunas <em>A fazer</em>, <em>Fazendo</em> e <em>Pronto</em>.</div>
+    <p style="margin-top:16px">Em Desenvolvimento Local, o Kanban ajuda a turma a planejar uma solução real para um problema real da escola, sem perder de vista o que precisa ser entregue.</p>
+    <div class="grid-2" style="margin-top:16px">
+      <div class="mini-card"><span class="icon">&#128221;</span><h4>A fazer</h4><p>Tarefas planejadas, mas que ainda não começaram.</p></div>
+      <div class="mini-card"><span class="icon">&#128295;</span><h4>Fazendo</h4><p>Tarefas que a turma está construindo ou testando agora.</p></div>
+      <div class="mini-card"><span class="icon">&#9989;</span><h4>Pronto</h4><p>Tarefas concluídas e testadas com critério claro.</p></div>
+      <div class="mini-card"><span class="icon">&#128269;</span><h4>Revisar</h4><p>Quando algo existe, mas precisa ser melhorado antes de ficar pronto.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="emoji-icon">&#128444;</span> Exemplo visual de Kanban</h2>
+    <p>Veja como o quadro pode ficar no caderno ou no quadro da sala. Cada cartão representa uma tarefa pequena do projeto.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
+      <div style="background:#F5F3FF;border:2px solid #C4B5FD;border-radius:16px;padding:14px;">
+        <h3 style="color:var(--roxo);font-size:1rem;margin-bottom:10px;">A FAZER</h3>
+        <div style="background:white;border-left:5px solid var(--roxo-claro);border-radius:10px;padding:10px;margin-bottom:10px;box-shadow:0 4px 12px rgba(107,33,168,0.12);">Criar botão "Limpar conversa"</div>
+        <div style="background:white;border-left:5px solid var(--roxo-claro);border-radius:10px;padding:10px;margin-bottom:10px;box-shadow:0 4px 12px rgba(107,33,168,0.12);">Adicionar perguntas prontas</div>
+        <div style="background:white;border-left:5px solid var(--roxo-claro);border-radius:10px;padding:10px;box-shadow:0 4px 12px rgba(107,33,168,0.12);">Criar painel de exemplos</div>
+      </div>
+      <div style="background:#FFF7ED;border:2px solid #FDBA74;border-radius:16px;padding:14px;">
+        <h3 style="color:var(--laranja);font-size:1rem;margin-bottom:10px;">FAZENDO</h3>
+        <div style="background:white;border-left:5px solid var(--laranja);border-radius:10px;padding:10px;margin-bottom:10px;box-shadow:0 4px 12px rgba(255,107,53,0.12);">Planejar indicador "Processando..."</div>
+        <div style="background:white;border-left:5px solid var(--laranja);border-radius:10px;padding:10px;box-shadow:0 4px 12px rgba(255,107,53,0.12);">Definir teste simples da tarefa</div>
+      </div>
+      <div style="background:#F0FDF4;border:2px solid #86EFAC;border-radius:16px;padding:14px;">
+        <h3 style="color:#16A34A;font-size:1rem;margin-bottom:10px;">PRONTO</h3>
+        <div style="background:white;border-left:5px solid var(--verde);border-radius:10px;padding:10px;margin-bottom:10px;box-shadow:0 4px 12px rgba(34,197,94,0.12);">Abrir tela inicial do chat</div>
+        <div style="background:white;border-left:5px solid var(--verde);border-radius:10px;padding:10px;box-shadow:0 4px 12px rgba(34,197,94,0.12);">Responder com teste/mock</div>
+      </div>
+    </div>
+    <div class="destaque" style="margin-top:18px;">O Kanban não é decoração: ele mostra o andamento real do projeto e ajuda a turma a decidir a próxima ação.</div>
+  </div>
+
+  <div class="card verde">
+    <h2><span class="emoji-icon">&#128187;</span> Tarefas reais do nosso MVP</h2>
+    <table class="tabela">
+      <tr><th>Microentrega</th><th>Para que serve?</th></tr>
+      <tr><td>Indicador "Processando..."</td><td>Mostrar ao usuário que o bot está preparando a resposta.</td></tr>
+      <tr><td>Botão "Limpar conversa"</td><td>Permitir recomeçar o atendimento sem confusão.</td></tr>
+      <tr><td>Botões de perguntas prontas</td><td>Ajudar quem não sabe como perguntar ao chat.</td></tr>
+      <tr><td>Histórico com localStorage</td><td>Guardar a conversa no navegador durante o uso.</td></tr>
+      <tr><td>Hora HH:mm nas mensagens</td><td>Registrar quando cada mensagem foi enviada.</td></tr>
+      <tr><td>Painel "O que posso perguntar?"</td><td>Dar exemplos clicáveis sobre horários, provas, trabalhos e avisos.</td></tr>
+    </table>
+    <div class="destaque">Critério importante: cada tarefa precisa melhorar a comunicação escolar sem inventar informações.</div>
+  </div>
+
+  <div class="card azul">
+    <h2><span class="emoji-icon">&#128204;</span> Microproduto da aula</h2>
+    <div class="conceito-box"><strong>Produto do dia:</strong> um quadro Kanban da Central de Avisos com pelo menos 6 tarefas distribuídas entre <em>A fazer</em>, <em>Fazendo</em> e <em>Pronto</em>.</div>
+    <p>O quadro pode ser feito no caderno. O importante é que cada tarefa tenha um nome curto e um critério simples de conclusão.</p>
+  </div>
+
+  <div class="caderno-section">
+    <h3>Resumo para o Caderno - Aula 13</h3>
+    <ol>
+      <li>Kanban é um quadro visual para organizar tarefas de um projeto.</li>
+      <li>As colunas mais comuns são A fazer, Fazendo e Pronto.</li>
+      <li>O Kanban ajuda a transformar um projeto grande em pequenas entregas.</li>
+      <li>No projeto Central de Avisos, cada microentrega melhora o uso do chat.</li>
+      <li>O indicador "Processando..." melhora a experiência do usuário.</li>
+      <li>O botão "Limpar conversa" ajuda a recomeçar o atendimento.</li>
+      <li>As perguntas prontas ajudam quem não sabe como perguntar.</li>
+      <li>O histórico e a hora das mensagens organizam melhor a conversa.</li>
+      <li>Em Desenvolvimento Local, a organização do projeto precisa responder a um problema real da escola.</li>
+      <li>O microproduto da aula é um quadro Kanban com as tarefas da Central de Avisos.</li>
+    </ol>
+  </div>
+
+  <div class="quiz-section">
+    <h2>&#127918; Quiz - Kanban e Central de Avisos</h2>
+    <p style="opacity:0.8;margin-bottom:16px">10 questões para testar seu conhecimento!</p>
+    <div id="quiz-inner"><p>Carregando quiz...</p></div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:30px;color:#6B7280;font-size:0.85rem;border-top:2px solid #E5E7EB;margin-top:40px;">
+  <p>Central de Avisos - Desenvolvimento Local - 2 Ano EM - EE MBNC - 2026</p>
+</footer>
+
+<script>
+var PERGUNTAS = [
+  {"q":"Para que serve o Kanban?","o":["Organizar visualmente as tarefas do projeto","Substituir a pesquisa","Apagar o planejamento","Criar informações falsas"],"c":0,"e":"Kanban ajuda a visualizar o que precisa ser feito, o que está em andamento e o que já foi concluído."},
+  {"q":"Qual coluna é comum em um quadro Kanban?","o":["A fazer","Nunca fazer","Sem professor","Fora da escola"],"c":0,"e":"A fazer é uma coluna usada para tarefas planejadas que ainda não começaram."},
+  {"q":"No projeto Central de Avisos, uma microentrega é:","o":["Indicador Processando","Trocar o nome da escola","Inventar avisos","Apagar a planilha"],"c":0,"e":"O indicador Processando é uma melhoria pequena e visível no chat."},
+  {"q":"O botão Limpar conversa ajuda o usuário a:","o":["Recomeçar o atendimento","Excluir a disciplina","Alterar notas","Criar prova automática"],"c":0,"e":"Ele permite limpar a tela e iniciar uma nova conversa."},
+  {"q":"As perguntas prontas servem para:","o":["Ajudar quem não sabe como perguntar","Impedir perguntas","Trocar a turma","Esconder avisos"],"c":0,"e":"Elas orientam o usuário com exemplos claros."},
+  {"q":"O histórico com localStorage guarda a conversa onde?","o":["No navegador","No quadro da sala","No boletim","Na chamada"],"c":0,"e":"localStorage guarda dados no navegador do usuário."},
+  {"q":"A hora HH:mm nas mensagens ajuda a:","o":["Registrar quando a mensagem foi enviada","Calcular média bimestral","Mudar o calendário","Excluir os horários"],"c":0,"e":"A hora organiza a leitura da conversa."},
+  {"q":"Em Desenvolvimento Local, o projeto deve responder a:","o":["Um problema real da escola","Um tema sem contexto","Uma brincadeira aleatória","Uma informação inventada"],"c":0,"e":"A Central de Avisos existe para enfrentar um problema real de comunicação escolar."},
+  {"q":"Uma tarefa vai para Pronto quando:","o":["Foi concluída e testada","Foi esquecida","Ainda nem começou","Está confusa"],"c":0,"e":"Pronto exige conclusão e critério mínimo de teste."},
+  {"q":"O microproduto desta aula é:","o":["Um quadro Kanban da Central de Avisos","Uma redação sem projeto","Uma prova surpresa","Um desenho livre sem relação"],"c":0,"e":"O quadro Kanban registra as tarefas do MVP."}
+];
+var atual=0,pontos=0,respondidas=0;
+function mostrarPergunta(){
+  if(atual>=PERGUNTAS.length){mostrarResultado();return;}
+  var p=PERGUNTAS[atual];
+  document.getElementById("qprogbar").style.width=((atual/PERGUNTAS.length)*100)+"%";
+  document.getElementById("qnum").textContent=(atual+1)+" de "+PERGUNTAS.length;
+  document.getElementById("qtext").textContent=p.q;
+  var fb=document.getElementById("qfeedback");
+  fb.innerHTML="";fb.style.display="none";
+  document.getElementById("qnext").style.display="none";
+  var ops=document.getElementById("qoptions");
+  ops.innerHTML="";
+  p.o.forEach(function(op,i){
+    var btn=document.createElement("button");
+    btn.className="quiz-option";btn.textContent=op;
+    btn.onclick=function(){responder(i,p.c,p.e);};
+    ops.appendChild(btn);
+  });
+}
+function responder(i,correto,explicacao){
+  var btns=document.querySelectorAll(".quiz-option");
+  btns.forEach(function(b){b.disabled=true;});
+  btns[correto].classList.add("correta");
+  var fb=document.getElementById("qfeedback");
+  if(i===correto){pontos++;fb.className="quiz-feedback ok";fb.textContent="Correto! "+explicacao;}
+  else{btns[i].classList.add("errada");fb.className="quiz-feedback err";fb.textContent="Ops! "+explicacao;}
+  fb.style.display="block";respondidas++;
+  document.getElementById("qnext").style.display="inline-block";
+  document.getElementById("qscore").textContent="Pontos: "+pontos+"/"+respondidas;
+}
+function proximaPergunta(){atual++;mostrarPergunta();}
+function mostrarResultado(){
+  var total=PERGUNTAS.length,perc=Math.round((pontos/total)*100);
+  var msg=perc>=90?"Excelente!":perc>=70?"Muito bem!":perc>=50?"Bom trabalho!":"Revise e tente de novo!";
+  document.getElementById("quiz-inner").innerHTML="<div class='quiz-result'><div class='score-big'>"+pontos+"/"+total+"</div><div class='score-msg'>"+msg+" "+perc+"% de acertos</div><button class='btn-quiz' style='margin-top:24px' onclick='location.reload()'>Tentar Novamente</button></div>";
+}
+var qHTML="<div class='quiz-progress'><div class='quiz-progress-bar' id='qprogbar' style='width:0%'></div></div><div class='quiz-score' id='qscore'>Pontos: 0/0</div><div style='font-size:0.85rem;opacity:0.7;margin-bottom:12px' id='qnum'></div><div class='quiz-question' id='qtext'></div><div class='quiz-options' id='qoptions'></div><div id='qfeedback' class='quiz-feedback' style='display:none'></div><button class='btn-quiz' id='qnext' onclick='proximaPergunta()' style='display:none'>Proxima</button>";
+window.onload=function(){document.getElementById("quiz-inner").innerHTML=qHTML;mostrarPergunta();};
+</script>
+</body>
+</html>
